@@ -12,3 +12,4 @@ Just go forward!
 The Express backend will be a RESTful server providing the
 the basic CRUD manipulation
 - [ ] User Login Auth
+- [ ] RESTful features
