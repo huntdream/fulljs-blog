@@ -3,7 +3,9 @@ I am going to build a blog with React for front-end and Express for backend.
 
 Everything will be implemented by JavaScript.
 
-Just go forward!
+I  have no systematical outline about this app
+
+Just go forward step by step!
 
 (I think I have to change the repo's name)
 
