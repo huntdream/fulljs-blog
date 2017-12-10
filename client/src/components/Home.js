@@ -3,9 +3,6 @@ import {Grid, GridCell} from 'rmwc/Grid';
 import {Elevation} from 'rmwc';
 
 class Home extends Component {
-    state = {
-        elevation: 2
-    };
 
     render() {
         return (
