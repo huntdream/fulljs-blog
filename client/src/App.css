@@ -1,5 +1,15 @@
+.body>header {
+    position: fixed;
+    top: 0;
+    height: 40px;
+}
+
 main {
-    margin: 3rem;
+    min-width: calc(100% - 240px);
+    max-width: 100%;
+    position: absolute;
+    left: 240px;
+    top: 60px;
 }
 
 main .mdc-layout-grid__cell {
@@ -10,4 +20,14 @@ main .mdc-layout-grid__cell {
 main [class*=mdc-elevation--z] {
     padding: 10px;
     height: 100%;
+}
+
+.home-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+aside {
+    position: fixed;
+    top: 60px;
 }
