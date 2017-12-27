@@ -1,7 +1,12 @@
 .body>header {
     position: fixed;
     top: 0;
-    height: 40px;
+    height: 50px;
+    width: 100%;
+    background-color: #4285f4;
+    display: flex;
+    align-items: center;
+    z-index: 999;
 }
 
 main {
@@ -29,5 +34,5 @@ main [class*=mdc-elevation--z] {
 
 aside {
     position: fixed;
-    top: 60px;
+    top: 50px;
 }

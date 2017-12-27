@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Grid, GridCell} from 'rmwc/Grid';
-import {Elevation} from 'rmwc';
+import React, { Component } from 'react';
+import { Grid, GridCell } from 'rmwc/Grid';
+import { Elevation } from 'rmwc';
 
 class Home extends Component {
 

@@ -1,14 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Button, Icon} from 'rmwc';
+import { Button } from 'rmwc';
 
 class Header extends Component {
-    constructor(props){
-        super(props);
-    }
     render() {
         return (
-            <header><Button onClick={this.props.onClick}>Hello</Button></header>
+            <header><Button onClick={this.props.onClick}>Menu</Button></header>
         )
     }
 }

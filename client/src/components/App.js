@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
 
 import Home from './Home';
@@ -14,6 +15,10 @@ const mainStyle = {
         left: 0
     }
 };
+
+const Hello = () => (
+    <h1> Hello World</h1>
+)
 
 class App extends Component {
     constructor(props) {
@@ -33,7 +38,6 @@ class App extends Component {
             isOPen: !prevState.isOPen,
             mainStyle: theStyle
         }));
-        console.log("Hello");
     }
 
     toggleStyle(isOpen) {
@@ -43,15 +47,20 @@ class App extends Component {
     render() {
 
         return (
-            <div className="body">
-                <Header onClick={this.toggleMenu}/>
-                <Sidebar isOpen={this.state.isOPen}/>
-                <main style={this.state.mainStyle}>
-                    <div className="home-wrapper">
-                        <Home/>
-                    </div>
-                </main>
-            </div>
+            <Router>
+                <div className="body">
+                    <Header onClick={this.toggleMenu} />
+                    <Sidebar isOpen={this.state.isOPen} />
+                    <main style={this.state.mainStyle}>
+                        <div className="home-wrapper">
+                            <Route exact path="/" component={Home} />
+                            <Route path="/articles" component={Hello} />
+                            <Route path="/category" component={Hello} />
+                            <Route path="/tags" component={Hello} />
+                        </div>
+                    </main>
+                </div>
+            </Router>
         );
     }
 }
