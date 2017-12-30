@@ -1,4 +1,5 @@
-.body>header {
+@import '~antd/dist/antd.css';
+.header {
     position: fixed;
     top: 0;
     height: 50px;
@@ -9,22 +10,15 @@
     z-index: 999;
 }
 
-main {
-    min-width: calc(100% - 240px);
-    max-width: 100%;
-    position: absolute;
-    left: 240px;
-    top: 60px;
-}
-
-main .mdc-layout-grid__cell {
-    height: 200px;
-    padding: 10px;
-}
-
-main [class*=mdc-elevation--z] {
-    padding: 10px;
+.body {
+    width: 100%;
     height: 100%;
+}
+
+main {
+    position: absolute;
+    top: 60px;
+    left: 256px;
 }
 
 .home-wrapper {
@@ -34,5 +28,16 @@ main [class*=mdc-elevation--z] {
 
 aside {
     position: fixed;
-    top: 50px;
+    z-index: 1000;
+}
+
+main .gutter-box {
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: box-shadow .2s linear;
+}
+
+main .gutter-box:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }

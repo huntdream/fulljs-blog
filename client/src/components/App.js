@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
 
 import Home from './Home';
-import Sidebar from './Sidebar';
+import Sider from './Sider';
 import Header from './Header';
 
 const mainStyle = {
     menuIsOPen: {
-        maxWidth: "calc(100% - 240px)"
+        maxWidth: "100%"
     },
     menuNotOPen: {
         minWidth: "100%",
@@ -16,8 +16,8 @@ const mainStyle = {
     }
 };
 
-const Hello = () => (
-    <h1> Hello World</h1>
+const Hello = ({ match }) => (
+    <h1> Hello {match.path}</h1>
 )
 
 class App extends Component {
@@ -50,7 +50,7 @@ class App extends Component {
             <Router>
                 <div className="body">
                     <Header onClick={this.toggleMenu} />
-                    <Sidebar isOpen={this.state.isOPen} />
+                    <Sider isOpen={this.state.isOPen} />
                     <main style={this.state.mainStyle}>
                         <div className="home-wrapper">
                             <Route exact path="/" component={Home} />
