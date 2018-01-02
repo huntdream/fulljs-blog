@@ -2,7 +2,26 @@ import React, { Component } from 'react';
 import { Row, Col, Button } from 'antd';
 import { Link } from 'react-router-dom';
 
-const style = {};
+const style = {
+    container: {
+        columnCount: '4',
+        columnGap: '1em'
+    },
+    postWrapper: {
+        display: 'inline-block',
+        width: '100%'
+    },
+    post: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    header: {
+        alignSelf: 'center',
+        borderBottom: '2px solid #eee',
+        marginBottom: '.5em',
+        paddingBottom: '.5em'
+    }
+};
 
 style.loading = {
     position: 'absolute',
@@ -20,8 +39,8 @@ class Home extends Component {
         this.fetchPosts = this.fetchPosts.bind(this);
     }
 
-    fetchPosts() {
-        fetch('http://localhost:3000/posts')
+    fetchPosts(table) {
+        fetch(`http://localhost:3000/${table}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -34,7 +53,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.fetchPosts();
+        this.fetchPosts('poetries');
     }
 
     render() {
@@ -45,17 +64,20 @@ class Home extends Component {
             )
         }
         return (
-            <Row>
-                {Array(10).fill(0).map((item, index) =>
-                    <Col span={8} key={index}>
-                        <Link to={`/${posts.post_name}`}>
-                            <div className="gutter-box">
-                                {posts.post_name}
+            <div style={style.container}>
+                {posts.map((post, index) =>
+                    <div key={index} style={style.postWrapper}>
+                        <Link to={`/${post.title}`}>
+                            <div className="gutter-box" style={style.post}>
+                                <header style={style.header}>{post.title}</header>
+                                <div>
+                                    {post.content}
+                                </div>
                             </div>
                         </Link>
-                    </Col>
+                    </div>
                 )}
-            </Row>
+            </div>
         )
     }
 }

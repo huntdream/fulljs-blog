@@ -1,5 +1,11 @@
 extends layout
 
 block content
+
   h1= title
-  p Welcome to #{title}
+  form(action="/posts" method='post')
+    each item in ['post_title','post_name','post_content']
+      div(style="display:flex;margin:10px")
+        label(for=item style="width:100px")=item
+        input(name=item id=item) 
+    button(type='submit') Submit

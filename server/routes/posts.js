@@ -9,4 +9,13 @@ router.get('/', function (req, res) {
     })
 });
 
+router.post('/', function (req, res) {
+    req.body.post_date = new Date();
+    console.log(req.body);
+    connection.query('insert into posts set ?', req.body, function (err, results, field) {
+        if (err) throw err;
+        res.send(results);
+    })
+})
+
 module.exports = router;

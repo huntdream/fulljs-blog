@@ -13,7 +13,7 @@ class Article extends Component {
     render() {
         return (
             <div className="article">
-                {this.props.match.path}
+                {this.props.children}
             </div>
         )
     }

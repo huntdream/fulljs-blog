@@ -6,8 +6,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+// import routes
 const index = require('./routes/index');
 const posts = require('./routes/posts');
+const poetries = require('./routes/poetries');
 
 const app = express();
 
@@ -26,6 +28,7 @@ app.use(cors());
 
 app.use('/', index);
 app.use('/posts', posts);
+app.use('/poetries', poetries);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

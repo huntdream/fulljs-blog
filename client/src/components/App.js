@@ -14,7 +14,6 @@ const Hello = ({ match }) => (
 class App extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
