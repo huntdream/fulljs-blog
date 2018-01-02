@@ -22,11 +22,6 @@ const links = [
     }
 ];
 
-const linkStyle = {
-    textDecoration: "none",
-    color: "inherit",
-    fontFamily: "微软雅黑"
-}
 
 class Sider extends Component {
     state = {

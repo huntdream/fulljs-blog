@@ -19,6 +19,7 @@ main {
     position: absolute;
     top: 60px;
     left: 256px;
+    width: calc(100% - 256px);
 }
 
 .home-wrapper {
