@@ -67,7 +67,7 @@ class Home extends Component {
             <div style={style.container}>
                 {posts.map((post, index) =>
                     <div key={index} style={style.postWrapper}>
-                        <Link to={`/${post.title}`}>
+                        <Link to={`/${post.name}/${post.title}`}>
                             <div className="gutter-box" style={style.post}>
                                 <header style={style.header}>{post.title}</header>
                                 <div>
