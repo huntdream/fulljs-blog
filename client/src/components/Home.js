@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Row, Col, Button } from 'antd';
 import { Link } from 'react-router-dom';
 
 const style = {
@@ -60,7 +59,7 @@ class Home extends Component {
         const { posts, loading } = this.state;
         if (loading) {
             return (
-                <Button shape="circle" loading style={style.loading} />
+                <p>Loading...</p>
             )
         }
         return (
