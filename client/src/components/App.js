@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../App.css';
 
 import Home from './Home';
@@ -12,29 +12,27 @@ const Hello = ({ match }) => (
 )
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         return (
             <Router>
-                <div className="body">
+                <React.Fragment>
                     <Header />
-                    <Sider />
-                    <main>
-                        <div className="home-wrapper">
-                            <Switch>
-                                <Route exact path="/" component={Home} />
-                                <Route path="/articles" component={Hello} />
-                                <Route path="/category" component={Hello} />
-                                <Route path="/tags" component={Hello} />
-                                <Route path="/:article" component={Article} />
-                            </Switch>
-                        </div>
-                    </main>
-                </div>
+                    <div className="wrapper">
+                        <Sider />
+                        <main className="main">
+                            <div className="content">
+                                <Switch>
+                                    <Route exact path="/" component={Home} />
+                                    <Route path="/articles" component={Hello} />
+                                    <Route path="/category" component={Hello} />
+                                    <Route path="/tags" component={Hello} />
+                                    <Route path="/:article" component={Article} />
+                                </Switch>
+                            </div>
+                        </main>
+                    </div>
+                </React.Fragment>
             </Router>
         );
     }

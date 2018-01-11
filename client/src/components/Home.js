@@ -1,54 +1,42 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-const style = {
-    container: {
-        columnCount: '4',
-        columnGap: '1em'
-    },
-    postWrapper: {
-        display: 'inline-block',
-        width: '100%'
-    },
-    post: {
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    header: {
-        alignSelf: 'center',
-        borderBottom: '2px solid #eee',
-        marginBottom: '.5em',
-        paddingBottom: '.5em'
-    }
-};
-
-style.loading = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%'
-}
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             posts: [],
-            loading: true
+            loading: true,
+            page: 1
         }
         this.fetchPosts = this.fetchPosts.bind(this);
+        this.pageNavgation = this.pageNavgation.bind(this);
     }
 
-    fetchPosts(table) {
-        fetch(`http://localhost:3000/${table}`)
+    fetchPosts(posts) {
+        fetch(`http://localhost:3000/${posts}?&page=${this.state.page}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                this.setState({
-                    posts: data,
-                    loading: false
-                })
+                if (data.success) {
+                    this.setState({
+                        posts: data.poetries,
+                        loading: false,
+                    })
+                } else {
+                    return false;
+                }
             }
             )
+    }
+
+    async pageNavgation(direction) {
+        await this.setState({
+            page: this.state.page + direction
+        });
+        this.fetchPosts('poetries');
+        console.log('hello', this.state.page);
     }
 
     componentDidMount() {
@@ -63,19 +51,20 @@ class Home extends Component {
             )
         }
         return (
-            <div style={style.container}>
+            <div className="content--list">
                 {posts.map((post, index) =>
-                    <div key={index} style={style.postWrapper}>
+                    <div key={index} className="list--item">
                         <Link to={`/${post.name}/${post.title}`}>
-                            <div className="gutter-box" style={style.post}>
-                                <header style={style.header}>{post.title}</header>
-                                <div>
-                                    {post.content}
-                                </div>
-                            </div>
+                            {post.title}
                         </Link>
                     </div>
                 )}
+                <a className="page--navigation prev" onClick={() => this.pageNavgation(-1)}>
+                    <i className="arrow left"></i>
+                </a>
+                <a className="page--navigation next" onClick={() => this.pageNavgation(1)}>
+                    <i className="arrow right"></i>
+                </a>
             </div>
         )
     }
