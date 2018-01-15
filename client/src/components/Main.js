@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
+import List from './List';
+import Navigator from './Navigator';
 
 class Home extends Component {
     constructor(props) {
@@ -31,12 +33,20 @@ class Home extends Component {
             )
     }
 
-    async pageNavgation(direction) {
+    async pageNavgation(e) {
+        let curPage = this.state.page;
+        let direction = e.target.classList.contains('left');
+        if (direction) {
+            curPage = curPage != 1 ? curPage - 1 : curPage;
+        } else {
+            curPage += 1;
+        }
+
         await this.setState({
-            page: this.state.page + direction
+            page: curPage
         });
         this.fetchPosts('poetries');
-        console.log('hello', this.state.page);
+        console.log(this.state.page);
     }
 
     componentDidMount() {
@@ -51,20 +61,9 @@ class Home extends Component {
             )
         }
         return (
-            <div className="content--list">
-                {posts.map((post, index) =>
-                    <div key={index} className="list--item">
-                        <Link to={`/${post.name}/${post.title}`}>
-                            {post.title}
-                        </Link>
-                    </div>
-                )}
-                <a className="page--navigation prev" onClick={() => this.pageNavgation(-1)}>
-                    <i className="arrow left"></i>
-                </a>
-                <a className="page--navigation next" onClick={() => this.pageNavgation(1)}>
-                    <i className="arrow right"></i>
-                </a>
+            <div>
+                <List posts={this.state.posts} />
+                <Navigator onClick={this.pageNavgation} />
             </div>
         )
     }

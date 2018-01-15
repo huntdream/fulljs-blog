@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../App.css';
 
-import Home from './Home';
+import Main from './Main';
 import Sider from './Sider';
 import Header from './Header';
 import Article from './Article';
@@ -23,11 +23,12 @@ class App extends Component {
                         <main className="main">
                             <div className="content">
                                 <Switch>
-                                    <Route exact path="/" component={Home} />
+                                    <Route exact path="/" component={Main} />
                                     <Route path="/articles" component={Hello} />
                                     <Route path="/category" component={Hello} />
                                     <Route path="/tags" component={Hello} />
                                     <Route path="/:article" component={Article} />
+
                                 </Switch>
                             </div>
                         </main>
