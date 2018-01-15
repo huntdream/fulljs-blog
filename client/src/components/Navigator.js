@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 
 const Navigator = (props) => (
     <div>
-        <a className="page--navigation prev" onClick={props.onClick}>
+        <button className="page--navigation prev" onClick={props.onClick} style={{ display: props.left }}>
             <i className="arrow left"></i>
-        </a>
-        <a className="page--navigation next" onClick={props.onClick}>
+        </button>
+        <button className="page--navigation next" onClick={props.onClick} style={{ display: props.right }} >
             <i className="arrow right"></i>
-        </a>
+        </button>
     </div>
 )
 

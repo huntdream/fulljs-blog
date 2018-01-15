@@ -91,6 +91,9 @@ a {
     top: 50%;
     user-select: none;
     cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    outline: none;
 }
 
 .page--navigation.prev {

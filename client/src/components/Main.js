@@ -9,8 +9,9 @@ class Home extends Component {
         super(props);
         this.state = {
             posts: [],
-            loading: true,
-            page: 1
+            isLoading: true,
+            page: 1,
+            more: true
         }
         this.fetchPosts = this.fetchPosts.bind(this);
         this.pageNavgation = this.pageNavgation.bind(this);
@@ -24,9 +25,14 @@ class Home extends Component {
                 if (data.success) {
                     this.setState({
                         posts: data.poetries,
-                        loading: false,
+                        isLoading: false,
+                        more: true
                     })
                 } else {
+                    this.setState({
+                        page: this.state.page - 1,
+                        more: false
+                    })
                     return false;
                 }
             }
@@ -54,8 +60,8 @@ class Home extends Component {
     }
 
     render() {
-        const { posts, loading } = this.state;
-        if (loading) {
+        const { posts, isLoading } = this.state;
+        if (isLoading) {
             return (
                 <p>Loading...</p>
             )
@@ -63,7 +69,7 @@ class Home extends Component {
         return (
             <div>
                 <List posts={this.state.posts} />
-                <Navigator onClick={this.pageNavgation} />
+                <Navigator onClick={this.pageNavgation} left={this.state.page === 1 && 'none'} right={this.state.more || 'none'} />
             </div>
         )
     }
