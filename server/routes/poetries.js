@@ -5,8 +5,21 @@ const connection = require('../model/connection');
 
 router.get('/', function (req, res) {
     let page = parseInt(req.query.page);
+    let poetry_id = parseInt(req.query.id);
+    const sql = [
+        {
+            query: 'select poetries.id,content,title,poets.name from poetries inner join poets on poetries.poet_id=poets.id where name=? limit ?,?',
+            param: ['李白', (page - 1) * 30, 30]
+        },
+        {
+            query: 'SELECT content,title FROM poetries where id=?',
+            param: poetry_id
+        }
+    ];
+    realSQL = req.query.page ? sql[0] : sql[1];
+    console.log(realSQL);
     try {
-        connection.query('select content,title,poets.name from poetries inner join poets on poetries.poet_id=poets.id where name=? limit ?,?', ['李白', (page - 1) * 30, 30], function (err, results, fields) {
+        connection.query(realSQL.query, realSQL.param, function (err, results, fields) {
             if (err) console.log(err);
             let data = {
                 success: results.length,
@@ -20,4 +33,4 @@ router.get('/', function (req, res) {
     }
 })
 
-module.exports = router;
+module.exports = router; 
