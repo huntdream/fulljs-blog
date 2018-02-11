@@ -1,11 +1,15 @@
+import { combineReducers } from 'redux';
+
 let initialState = {
   posts: {
     items: [],
     isFetching: true,
     hasError: false
-  }
+  },
+  isDrawerOpen: false
 };
 
+//fetch posts
 function posts(state = initialState.posts, action) {
   switch (action.type) {
     case 'ITEMS_HAVE_ERROR':
@@ -19,4 +23,19 @@ function posts(state = initialState.posts, action) {
   }
 }
 
-export default posts;
+//drawer control
+function isDrawerOpen(state = initialState.isDrawerOpen, action) {
+  switch (action.type) {
+    case 'IS_DRAWER_OPEN':
+      return !state;
+    default:
+      return state;
+  }
+}
+
+const reducers = combineReducers({
+  posts,
+  isDrawerOpen
+});
+
+export default reducers;

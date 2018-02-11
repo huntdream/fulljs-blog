@@ -1,7 +1,8 @@
 import {
   ITEMS_ARE_LOADING,
   ITEMS_FETCH_SUCCESS,
-  ITEMS_HAVE_ERROR
+  ITEMS_HAVE_ERROR,
+  IS_DRAWER_OPEN
 } from './constants';
 import axios from 'axios';
 
@@ -41,3 +42,8 @@ export const itemFetchData = url => {
       .catch(() => dispatch(itemsHaveError(true)));
   };
 };
+
+export const toggleDrawer = bool => ({
+  type: IS_DRAWER_OPEN,
+  isDrawerOpen: bool
+});

@@ -1,13 +1,12 @@
-import React from 'react';
 import PostList from '../components/PostList';
 import { connect } from 'react-redux';
 import { itemFetchData } from '../redux/actions/index';
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ posts }) => {
   return {
-    items: state.items,
-    isFetching: state.isFetching,
-    hasError: state.hasError
+    items: posts.items,
+    isFetching: posts.isFetching,
+    hasError: posts.hasError
   };
 };
 

@@ -27,7 +27,7 @@ router.get('/', function(req, res) {
     ) {
       let data = {
         success: results.length,
-        poetries: [...results]
+        poetries: results
       };
       console.log(typeof results);
 
