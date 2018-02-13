@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../App.css';
 import VisibleHeader from '../containers/VisibleHeader';
 import ShowPost from '../containers/ShowPost';
@@ -19,7 +19,11 @@ class App extends Component {
                   <Route exact path="/" component={ShowPost} />
                   <Route
                     path="/moments"
-                    render={() => <h1>This is the Moments Component</h1>}
+                    render={() => (
+                      <h1 align="center">
+                        Current component is under construction
+                      </h1>
+                    )}
                   />
                 </div>
               </div>

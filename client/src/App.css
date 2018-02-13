@@ -52,7 +52,7 @@ a {
 }
 
 .global-nav {
-  height: 46px;
+  height: 47px;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
@@ -92,24 +92,30 @@ a {
   height: 46px;
 }
 
-.nav-list--item {
+.nav-list__item {
   height: 46px;
   float: left;
 }
 
-.nav-list--item:not(:first-child) {
+.nav-list__item:not(:first-child) {
   border-bottom: 1px solid #1b95e0;
 }
 
-.nav-list--item:not(:first-child):hover {
-  border-bottom: 2px solid #1c94e0;
+.nav-list__item:not(:first-child):hover {
+  color: #1c94e0;
 }
 
-.nav-list--item a {
+.nav-list__item:not(:first-child):hover > a {
+  height: 44px;
+  border-bottom: 2px solid rgb(28, 148, 224);
+}
+
+.nav-list__item a {
   display: block;
   height: 46px;
   line-height: 46px;
   padding: 0 14px 0 10px;
+  border-bottom: transparent;
 }
 
 .toggle-menu > i {
@@ -130,7 +136,7 @@ a {
   overflow: hidden;
 }
 
-.drawer--mask {
+.drawer__mask {
   display: block;
   position: absolute;
   top: 0;
@@ -145,13 +151,13 @@ a {
   transition: opacity 0.4s ease;
 }
 
-.drawer--open {
+.drawer__open {
   opacity: 1;
   pointer-events: auto;
   display: block;
 }
 
-.drawer--wrapper {
+.drawer__wrapper {
   position: absolute;
   flex-direction: column;
   left: 0;
@@ -163,26 +169,27 @@ a {
   transition: transform 0.2s ease;
   will-change: transform;
   overflow: hidden;
+  pointer-events: auto;
 }
 
-.drawer--bg {
+.drawer__bg {
   width: 100%;
   height: 95px;
   background-size: 100%;
   background-position: 0 center;
 }
 
-.drawer--content {
+.drawer__content {
   background-color: #fff;
 }
 
-.drawer--avatar {
+.drawer__avatar {
   margin: -30px 0 0 8px;
   display: inline-block;
   border-radius: 50%;
 }
 
-.drawer--avatar img {
+.drawer__avatar img {
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -190,14 +197,14 @@ a {
   box-sizing: border-box;
 }
 
-.drawer--user {
+.drawer__user {
   position: absolute;
   left: 90px;
   top: 103px;
   background-color: #fff;
 }
 
-.user--name {
+.user__name {
   font-weight: bold;
   font-size: 18px;
 }
@@ -218,7 +225,6 @@ a {
 
 .content-main {
   width: 100%;
-  margin: 0 10px;
 }
 /* 3.1 Page List */
 
@@ -239,11 +245,20 @@ a {
   margin-bottom: 15px;
 }
 
-.post-item--content {
+.post-item__content {
+  flex-basis: 50%;
+}
+
+.post-item__img {
+  flex-basis: 50%;
+}
+
+.content__wrapper {
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  padding: 16px;
-  width: 100%;
   justify-content: space-between;
+  background: #fff;
+  height: 100%;
+  box-sizing: border-box;
 }

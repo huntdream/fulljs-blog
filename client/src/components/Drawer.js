@@ -25,7 +25,8 @@ class Drawer extends Component {
   }
 
   toggleDrawer(e) {
-    if (e.target.classList.contains('drawer--mask')) {
+    if (e.target.classList.contains('drawer__mask')) {
+      console.log(e.target);
       this.props.closeDrawer();
     }
   }
@@ -35,22 +36,22 @@ class Drawer extends Component {
       <aside className="drawer" onClick={this.toggleDrawer}>
         <div
           className={
-            'drawer--mask ' + (this.props.isDrawerOpen && ' drawer--open')
+            'drawer__mask ' + (this.props.isDrawerOpen && ' drawer__open')
           }
         />
         <div
-          className="drawer--wrapper md-box-shadow"
+          className="drawer__wrapper md-box-shadow"
           style={
             (this.props.isDrawerOpen && style.showDrawer) || style.closeDrawer
           }
         >
-          <div className="drawer--bg" style={style.backgroundImage} />
-          <div className="drawer--content">
-            <div className="drawer--avatar">
+          <div className="drawer__bg" style={style.backgroundImage} />
+          <div className="drawer__content">
+            <div className="drawer__avatar">
               <img src={avatar} alt="avatar" />
             </div>
-            <div className="drawer--user">
-              <div className="user--name">Yu Mao</div>
+            <div className="drawer__user">
+              <div className="user__name">Yu Mao</div>
             </div>
           </div>
         </div>

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import img from '../assets/wings.jpg';
 
 const linkStyle = {
   backgroundImage: `url(${img})`,
   display: 'block',
-  width: '200px',
   height: '100%',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
@@ -25,21 +24,22 @@ class PostList extends Component {
   renderList(posts) {
     return posts.map(item => (
       <div key={item.id} className="post-item md-box-shadow">
-        <div className="post-item--img">
+        <div className="post-item__img">
           <Link to={`/${item.id}`} style={linkStyle} />
         </div>
-        <div className="post-item--content">
-          <h3 className="post-item--title">
-            <Link to={`/${item.id}`}>{item.title}</Link>
-          </h3>
-          <div className="post-item--author">{item.name}</div>
+        <div className="post-item__content">
+          <div className="content__wrapper">
+            <h3 className="post-item__title">
+              <Link to={`/${item.id}`}>{item.title}</Link>
+            </h3>
+            <div className="post-item__author">{item.name}</div>
+          </div>
         </div>
       </div>
     ));
   }
 
   render() {
-    console.log(this.props.isFetching);
     if (this.props.isFetching) {
       return <p>Loading</p>;
     }
