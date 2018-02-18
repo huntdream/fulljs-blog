@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
   const sql = [
     {
       query:
-        'select poetries.id,content,title,poets.name from poetries inner join poets on poetries.poet_id=poets.id where name=? limit ?,?',
+        'select poetries.id,title,poets.name from poetries inner join poets on poetries.poet_id=poets.id where name=? limit ?,?',
       param: ['李白', (page - 1) * 30, 30]
     },
     {

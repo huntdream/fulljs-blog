@@ -35,6 +35,11 @@ class Header extends Component {
                     Moments
                   </NavLink>
                 </li>
+                <li className="nav-list__item">
+                  <NavLink to="/newpost" activeStyle={activeNav}>
+                    New
+                  </NavLink>
+                </li>
               </ul>
             </div>
             <div className="nav-inner-right">

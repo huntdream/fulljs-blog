@@ -4,6 +4,8 @@ import '../App.css';
 import VisibleHeader from '../containers/VisibleHeader';
 import ShowPost from '../containers/ShowPost';
 import VisibleDrawer from '../containers/VisibleDrawer';
+import NewPost from './NewPost.js';
+import 'draft-js/dist/Draft.css';
 
 class App extends Component {
   render() {
@@ -15,17 +17,16 @@ class App extends Component {
           <div className="page-container">
             <div className="page-outer">
               <div role="main" className="content-main">
-                <div className="content-wrapper">
-                  <Route exact path="/" component={ShowPost} />
-                  <Route
-                    path="/moments"
-                    render={() => (
-                      <h1 align="center">
-                        Current component is under construction
-                      </h1>
-                    )}
-                  />
-                </div>
+                <Route exact path="/" component={ShowPost} />
+                <Route
+                  path="/moments"
+                  render={() => (
+                    <h1 align="center">
+                      Current component is under construction
+                    </h1>
+                  )}
+                />
+                <Route path="/newpost" component={NewPost} />
               </div>
             </div>
           </div>
