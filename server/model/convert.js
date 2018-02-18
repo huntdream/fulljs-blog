@@ -1,3 +1,5 @@
+// This file is used to convert data from mysql to mongodb
+
 const connection = require('./connection');
 const Poet = require('./poetSchema');
 const mongoose = require('mongoose');
