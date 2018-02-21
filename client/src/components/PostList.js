@@ -18,7 +18,7 @@ class PostList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPosts('http://192.168.0.163:3000/poetries?page=1');
+    this.props.fetchPosts('http://192.168.0.163:3000/poetries?author=李白');
   }
 
   renderList(posts) {
@@ -32,7 +32,7 @@ class PostList extends Component {
             <h3 className="post-item__title">
               <Link to={`/${item.id}`}>{item.title}</Link>
             </h3>
-            <div className="post-item__author">{item.name}</div>
+            <div className="post-item__author">{item.author}</div>
           </div>
         </div>
       </div>
@@ -45,9 +45,7 @@ class PostList extends Component {
     }
 
     return (
-      <div className="page-lists">
-        {this.renderList(this.props.items.poetries)}
-      </div>
+      <div className="page-lists">{this.renderList(this.props.items)}</div>
     );
   }
 }

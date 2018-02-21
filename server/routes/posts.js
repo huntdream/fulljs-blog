@@ -1,21 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../model/connection');
+const Post = require('../model/PostSchema');
 
-router.get('/', function (req, res) {
-    connection.query('select post_title,post_name,post_date from posts', function (err, results, field) {
-        if (err) throw err;
-        res.send(results);
-    })
+router.get('/', function(req, res) {
+  Post.find({}, function(err, post) {
+    post.length ? res.json(post) : res.json({ error: 'no data find' });
+  });
 });
 
-router.post('/', function (req, res) {
-    req.body.post_date = new Date();
-    console.log(req.body);
-    connection.query('insert into posts set ?', req.body, function (err, results, field) {
-        if (err) throw err;
-        res.send(results);
-    })
-})
+router.post('/', function(req, res) {});
 
 module.exports = router;

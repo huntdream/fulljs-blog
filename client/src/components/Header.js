@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import IconButton from 'material-ui/IconButton';
 
 const activeNav = {
   borderBottom: '2px solid rgb(28, 148, 224)',
-  color: '#1b95e0',
-  height: '44px'
+  color: '#1b95e0'
 };
 
 class Header extends Component {
@@ -17,12 +17,14 @@ class Header extends Component {
               <ul className="nav-list">
                 <li className="nav-list__item">
                   <div className="toggle-menu">
-                    <i
-                      className="material-icons"
-                      onClick={this.props.openDrawer}
-                    >
-                      menu
-                    </i>
+                    <IconButton color="inherit" aria-label="Menu">
+                      <i
+                        className="material-icons"
+                        onClick={this.props.openDrawer}
+                      >
+                        menu
+                      </i>
+                    </IconButton>
                   </div>
                 </li>
                 <li className="nav-list__item">
@@ -38,6 +40,16 @@ class Header extends Component {
                 <li className="nav-list__item">
                   <NavLink to="/newpost" activeStyle={activeNav}>
                     New
+                  </NavLink>
+                </li>
+                <li className="nav-list__item">
+                  <NavLink to="/signup" activeStyle={activeNav}>
+                    Sign Up
+                  </NavLink>
+                </li>
+                <li className="nav-list__item">
+                  <NavLink to="/login" activeStyle={activeNav}>
+                    Log In
                   </NavLink>
                 </li>
               </ul>

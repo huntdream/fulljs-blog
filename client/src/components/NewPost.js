@@ -21,7 +21,6 @@ class NewPost extends Component {
     this.setState({
       [label]: e.target.value
     });
-    console.log(e.target);
   }
 
   handleChange(value) {
@@ -30,6 +29,15 @@ class NewPost extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    fetch('http://localhost:3000/post', {
+      method: 'POST'
+    })
+      .then(res => {
+        if (res.status === 200) {
+          console.log('Post submitted successful');
+        }
+      })
+      .catch(err => console.log(err));
     console.log('submited');
   }
 

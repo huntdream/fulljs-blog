@@ -5,7 +5,10 @@ import VisibleHeader from '../containers/VisibleHeader';
 import ShowPost from '../containers/ShowPost';
 import VisibleDrawer from '../containers/VisibleDrawer';
 import NewPost from './NewPost.js';
-import 'draft-js/dist/Draft.css';
+import Sign from './Sign';
+
+const Signin = props => <Sign label="Sign In" path="signin" />;
+const Signup = props => <Sign label="Signup" path="signup" />;
 
 class App extends Component {
   render() {
@@ -27,6 +30,8 @@ class App extends Component {
                   )}
                 />
                 <Route path="/newpost" component={NewPost} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/login" component={Signin} />
               </div>
             </div>
           </div>

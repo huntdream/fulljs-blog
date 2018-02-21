@@ -29,20 +29,24 @@ class FormItem extends Component {
     return (
       <div className="form-item">
         <input
-          type="text"
+          type={this.props.type}
           className="md-input"
           ref={node => (this._ref = node)}
           name={this.props.refName}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
           onChange={this.props.onChange}
+          autoComplete="off"
           required
         />
         <div
           className="md-label"
           style={
             this.state.isFocus
-              ? { transform: 'scale(0.75) translateY(-100%)' }
+              ? {
+                  transform: 'scale(0.75) translateY(-100%)',
+                  color: 'rgb(0,188,212)'
+                }
               : { transform: 'translateY(0)' }
           }
         >
@@ -57,6 +61,7 @@ class FormItem extends Component {
           }
         />
         <span className="md-bar" />
+        <div className="md-error">{this.props.error}</div>
       </div>
     );
   }
