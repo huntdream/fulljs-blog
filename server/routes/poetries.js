@@ -3,9 +3,9 @@ const router = express.Router();
 
 const Poets = require('../model/PoetSchema');
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
+  console.log('/poetries', req.session.id);
   let author = req.query;
-  console.log(req.query);
   try {
     Poets.find(req.query)
       .limit(30)

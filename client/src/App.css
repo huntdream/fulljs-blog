@@ -33,6 +33,7 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+  outline: none;
 }
 
 /* fix for Firefox which will show a red border when a input
@@ -80,10 +81,6 @@ input:required {
   padding: 0 10px;
 }
 
-.global-nav-innner > * {
-  display: inline-block;
-}
-
 .search-btn {
   height: 24px;
   cursor: pointer;
@@ -102,7 +99,8 @@ input:required {
   padding: 0;
   color: #66757f;
   font-weight: bold;
-  height: 46px;
+  height: 47px;
+
   overflow: hidden;
 }
 
@@ -125,10 +123,9 @@ input:required {
 
 .nav-list__item a {
   display: block;
-  height: 46px;
-  line-height: 46px;
+  height: 45px;
+  line-height: 45px;
   padding: 0 14px 0 10px;
-  border-bottom: transparent;
 }
 
 .toggle-menu > i {
@@ -275,6 +272,21 @@ input:required {
   background: #fff;
   height: 100%;
   box-sizing: border-box;
+}
+
+/* New Post */
+.text-editor {
+  max-width: 80%;
+  margin: 0 15px;
+  min-width: 180px;
+}
+
+.submit-btn {
+  margin: 20px 0;
+}
+
+.ql-editor {
+  min-height: 180px;
 }
 
 /* Form */

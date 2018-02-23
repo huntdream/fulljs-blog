@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
 import FormItem from './FormItem/FormItem';
 import 'react-quill/dist/quill.snow.css';
+import Button from 'material-ui/Button';
 
 class NewPost extends Component {
   constructor() {
@@ -63,7 +64,9 @@ class NewPost extends Component {
             />
           </div>
           <div className="submit-btn">
-            <button type="submit">Submit</button>
+            <Button type="submit" variant="raised" color="primary">
+              Submit
+            </Button>
           </div>
         </form>
       </div>

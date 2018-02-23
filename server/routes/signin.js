@@ -3,23 +3,25 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../model/UserSchema');
 
 router.post('/', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
-    console.log(req);
+  passport.authenticate('local-signin', function(err, token, userData) {
     if (err) {
-      return next(err);
+      if (err.name === 'IncorrectCredentialsError') {
+        return res.status(400).json({
+          message: err.message
+        });
+      }
+
+      return res.status(400).json({
+        message: 'Could not process the form.'
+      });
     }
-    if (!user) {
-      res.status(401).json({ message: info.message });
-      return next(err);
-    }
-    console.log('hello');
-    res.status(200).json({ message: info.message });
-    return next();
+    return res
+      .status(200)
+      .json({ message: 'Log in successful', token, user: userData });
   })(req, res, next);
 });
 

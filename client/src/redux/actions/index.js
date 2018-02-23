@@ -25,18 +25,19 @@ export const itemFetchData = url => {
   return dispatch => {
     dispatch(itemsAreLoading(true));
 
-    axios
-      .get(url)
+    fetch(url, {
+      credentials: 'include'
+    })
       .then(response => {
         console.log(response);
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
 
-        return response;
+        return response.json();
       })
       .then(response => {
-        dispatch(itemsFetchSuccess(response.data));
+        dispatch(itemsFetchSuccess(response));
         dispatch(itemsAreLoading(false));
       })
       .catch(() => dispatch(itemsHaveError(true)));

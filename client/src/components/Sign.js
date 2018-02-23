@@ -26,10 +26,10 @@ class SignUp extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    const formData = new FormData(e.target);
     fetch(`http://localhost:3000/${this.props.path}`, {
       method: 'POST',
       body: JSON.stringify(data),
+      credentials: 'include',
       headers: new Headers({
         'Content-Type': 'application/json'
       })

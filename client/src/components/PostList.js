@@ -18,7 +18,7 @@ class PostList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPosts('http://192.168.0.163:3000/poetries?author=李白');
+    this.props.fetchPosts('http://localhost:3000/poetries?author=李白');
   }
 
   renderList(posts) {

@@ -13,9 +13,8 @@ module.exports = new PassportLocalStrategy(
   },
   (req, username, password, done) => {
     const userData = {
-      username: username.trim(),
-      password: password.trim(),
-      name: req.body.name.trim()
+      username: username,
+      password: password
     };
 
     const newUser = new User(userData);
@@ -24,7 +23,7 @@ module.exports = new PassportLocalStrategy(
         return done(err);
       }
 
-      return done(null);
+      return done(null, true, { message: 'Sign up successful' });
     });
   }
 );

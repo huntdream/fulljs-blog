@@ -17,13 +17,12 @@ class Header extends Component {
               <ul className="nav-list">
                 <li className="nav-list__item">
                   <div className="toggle-menu">
-                    <IconButton color="inherit" aria-label="Menu">
-                      <i
-                        className="material-icons"
-                        onClick={this.props.openDrawer}
-                      >
-                        menu
-                      </i>
+                    <IconButton
+                      color="inherit"
+                      aria-label="Menu"
+                      onClick={this.props.openDrawer}
+                    >
+                      <i className="material-icons">menu</i>
                     </IconButton>
                   </div>
                 </li>
@@ -48,8 +47,8 @@ class Header extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-list__item">
-                  <NavLink to="/login" activeStyle={activeNav}>
-                    Log In
+                  <NavLink to="/signin" activeStyle={activeNav}>
+                    Sign In
                   </NavLink>
                 </li>
               </ul>
