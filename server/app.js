@@ -38,37 +38,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
     secret: 'beingtowardsdeatch',
-    resave: true,
-    saveUninitialized: true,
-    name: 'leonard',
-    cookie: { secure: true }
+    resave: false,
+    saveUninitialized: false,
+    name: 'leonard'
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use('local-signin', localSignin);
 passport.use('local-signup', localSignup);
-passport.serializeUser(function(user, done) {
-  done(null, user._id);
-});
+passport.use('local-signin', localSignin);
+// passport.serializeUser(function(user, done) {
+//   done(null, user._id);
+// });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
+// passport.deserializeUser(function(id, done) {
+//   User.findById(id, function(err, user) {
+//     done(err, user);
+//   });
+// });
+app.use(cors());
 
-// app.use(cors());
-
-app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Credentials', true);
-  res.set('Access-Control-Allow-Origin', req.headers.origin);
-  res.set(
-    'Access-Control-Allow-Headers',
-    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
-  );
-  next();
-});
 app.use('/', index);
 app.use('/posts', posts);
 app.use('/poetries', poetries);

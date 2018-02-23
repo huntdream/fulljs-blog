@@ -23,12 +23,11 @@ UserSchema.pre('save', function saveHook(next) {
       return next(err);
     }
 
-    return bcrypt.hash(user.password, salt, noop, (err, hash) => {
+    return bcrypt.hash(user.password, salt, (err, hash) => {
       if (err) {
         return next(err);
       }
 
-      // replace a password string with hash value
       user.password = hash;
 
       return next();

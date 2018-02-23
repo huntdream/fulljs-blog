@@ -4,7 +4,6 @@ const router = express.Router();
 const Poets = require('../model/PoetSchema');
 
 router.get('/', function(req, res, next) {
-  console.log('/poetries', req.session.id);
   let author = req.query;
   try {
     Poets.find(req.query)

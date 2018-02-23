@@ -25,9 +25,7 @@ export const itemFetchData = url => {
   return dispatch => {
     dispatch(itemsAreLoading(true));
 
-    fetch(url, {
-      credentials: 'include'
-    })
+    fetch(url)
       .then(response => {
         console.log(response);
         if (response.status !== 200) {

@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../App.css';
-import VisibleHeader from '../containers/VisibleHeader';
-import ShowPost from '../containers/ShowPost';
-import VisibleDrawer from '../containers/VisibleDrawer';
+import HiHeader from '../containers/HiHeader';
+import Posts from '../containers/Posts';
+import HiDrawer from '../containers/HiDrawer';
 import NewPost from './NewPost.js';
 import Sign from './Sign';
 
-const Signin = props => <Sign label="Sign In" path="signin" />;
-const Signup = props => <Sign label="Sign Up" path="signup" />;
+const Signin = (props) => <Sign label="Sign In" path="signin" {...props}/>;
+const Signup = (props) => <Sign label="Sign Up" path="signup" {...props}/>;
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="container">
-          <VisibleHeader />
-          <VisibleDrawer />
+          <HiHeader />
+          <HiDrawer />
           <div className="page-container">
             <div className="page-outer">
               <div role="main" className="content-main">
-                <Route exact path="/" component={ShowPost} />
+                <Route exact path="/" component={Posts} />
                 <Route
                   path="/moments"
                   render={() => (

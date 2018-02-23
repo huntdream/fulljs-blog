@@ -16,5 +16,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const ShowPost = connect(mapStateToProps, mapDispatchToProps)(PostList);
-export default ShowPost;
+const Posts = connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default Posts;

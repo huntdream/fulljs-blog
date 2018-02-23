@@ -19,22 +19,24 @@ module.exports = new PassportLocalStrategy(
     };
 
     // find a user by username
-    return User.findOne({ username: userData.username }, function(err, user) {
+    User.findOne({ username: userData.username }, function(err, user) {
       if (err) {
-        return done(null, false, { message: 'err' });
+        return done(err);
       }
       if (!user) {
-        return done(null, false, { message: 'Username not found' });
+        const error = new Error('User not exists');
+        error.name = 'UserNotExists';
+
+        return done(error);
       }
 
-      // check if a hashed user's password is equal to a value saved in the database
       return user.comparePassword(userData.password, function(err, isMatch) {
         if (err) {
           return done(err);
         }
 
         if (!isMatch) {
-          const error = new Error('Incorrect email or password');
+          const error = new Error('Incorrect password');
           error.name = 'IncorrectCredentialsError';
 
           return done(error);
@@ -45,7 +47,6 @@ module.exports = new PassportLocalStrategy(
         };
 
         const token = jwt.sign(payload, 'a secret');
-
         const data = {
           name: user.username
         };
