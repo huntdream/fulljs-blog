@@ -7,6 +7,6 @@ const mapDispatchToProps = dispatch => ({
   openDrawer: () => dispatch(toggleDrawer())
 });
 
-const VisibleHeader = withRouter(connect(null, mapDispatchToProps)(Header));
+const HiDrawer = withRouter(connect(null, mapDispatchToProps)(Header));
 
-export default VisibleHeader;
+export default HiDrawer;
