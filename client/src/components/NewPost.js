@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import FormItem from './FormItem/FormItem';
 import 'react-quill/dist/quill.snow.css';
 import Button from 'material-ui/Button';
+import { dev, prod } from '../config/host';
 
 class NewPost extends Component {
   constructor() {
@@ -31,22 +32,26 @@ class NewPost extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { title, link, content } = this.state;
-    fetch('http://localhost:3000/posts', {
+    const token = localStorage.getItem('token');
+    fetch(`${prod}posts`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${token}`
       },
       body: JSON.stringify({ title, link, content })
     })
+      .then(res => res.json())
       .then(res => {
-        if (res.status === 200) {
-          console.log('Post submitted successful');
-          return res.json();
+        console.log(res);
+        if (res.success) {
+          console.log('Successful');
+        } else {
+          throw Error(res.message);
         }
       })
       .catch(err => console.log(err));
-    console.log('submited');
   }
 
   render() {

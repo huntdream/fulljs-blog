@@ -11,7 +11,7 @@ const localSignin = require('./passport/local-signin');
 const localSignup = require('./passport/local-signup');
 
 //connect mongo db
-const db = require('./config/db');
+const db = require('./config/').db;
 mongoose.connect(db);
 const User = require('./model/UserSchema');
 
@@ -25,8 +25,8 @@ const signin = require('./routes/signin');
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -58,6 +58,9 @@ passport.use('local-signin', localSignin);
 //   });
 // });
 app.use(cors());
+
+// auth-check middleware
+const applyAuthCheck = require('./passport/auth-check');
 
 app.use('/', index);
 app.use('/posts', posts);

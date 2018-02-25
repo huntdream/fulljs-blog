@@ -1,9 +1,10 @@
 import {
   ITEMS_ARE_LOADING,
   ITEMS_FETCH_SUCCESS,
-  ITEMS_HAVE_ERROR,
-  IS_DRAWER_OPEN
+  ITEMS_HAVE_ERROR
 } from './constants';
+
+import { dev, prod } from '../../config/host';
 
 export const itemsAreLoading = bool => ({
   type: ITEMS_ARE_LOADING,
@@ -20,11 +21,11 @@ export const itemsFetchSuccess = items => ({
   items
 });
 
-export const itemFetchData = url => {
+export const itemFetchData = path => {
   return dispatch => {
     dispatch(itemsAreLoading(true));
 
-    fetch(url)
+    fetch(prod + path)
       .then(response => {
         console.log(response);
         if (response.status !== 200) {
@@ -33,15 +34,15 @@ export const itemFetchData = url => {
 
         return response.json();
       })
-      .then(response => {
-        dispatch(itemsFetchSuccess(response));
-        dispatch(itemsAreLoading(false));
+      .then(res => {
+        if (res.success) {
+          dispatch(itemsFetchSuccess(res.posts));
+          dispatch(itemsAreLoading(false));
+        } else {
+          console.log(res.error);
+          throw Error(res.error);
+        }
       })
       .catch(() => dispatch(itemsHaveError(true)));
   };
 };
-
-export const toggleDrawer = bool => ({
-  type: IS_DRAWER_OPEN,
-  isDrawerOpen: bool
-});

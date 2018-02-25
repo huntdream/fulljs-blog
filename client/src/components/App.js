@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import '../App.css';
 import HiHeader from '../containers/HiHeader';
 import Posts from '../containers/Posts';
@@ -7,7 +8,13 @@ import HiDrawer from '../containers/HiDrawer';
 import NewPost from './NewPost.js';
 import Login from '../containers/Login';
 
+import { initAuth } from '../redux/actions/auth';
+
 class App extends Component {
+  componentWillMount() {
+    const token = localStorage.getItem('token');
+    this.props.initAuth(token);
+  }
   render() {
     return (
       <Router>
@@ -38,4 +45,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  initAuth: token => dispatch(initAuth(token))
+});
+
+export default connect(null, mapDispatchToProps)(App);

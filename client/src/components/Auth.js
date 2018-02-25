@@ -25,8 +25,10 @@ class Sign extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    console.log(JSON.stringify(data));
     this.props.login(data);
+    if (this.props.isAuthenticated) {
+      this.props.history.push('/');
+    }
   }
 
   render() {

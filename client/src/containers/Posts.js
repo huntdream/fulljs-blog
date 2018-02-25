@@ -1,6 +1,6 @@
 import PostList from '../components/PostList';
 import { connect } from 'react-redux';
-import { itemFetchData } from '../redux/actions/index';
+import { itemFetchData } from '../redux/actions/fetchPosts';
 
 const mapStateToProps = ({ posts }) => {
   return {

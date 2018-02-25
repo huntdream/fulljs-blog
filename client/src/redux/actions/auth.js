@@ -1,13 +1,20 @@
+import { dev, prod } from '../../config/host';
 // constants
 const REQUEST_LOGIN = 'REQUEST_LOGIN';
 const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
 const ERROR_LOGIN = 'ERROR_LOGIN';
+const AUTHENTICATE = 'AUTHENTICATE';
 
 const requestLogin = creds => ({
   type: REQUEST_LOGIN,
   isFetching: true,
   isAuthenticated: false,
   creds
+});
+
+const authenticate = bool => ({
+  type: AUTHENTICATE,
+  isAuthenticated: bool
 });
 
 const receiveLogin = token => ({
@@ -35,7 +42,7 @@ export const login = (creds, path) => {
 
   return dispatch => {
     dispatch(requestLogin);
-    fetch(`http://localhost:3000/${path}`, config)
+    fetch(prod + path, config)
       .then(res => res.json())
       .then(res => {
         if (res.success) {
@@ -46,5 +53,14 @@ export const login = (creds, path) => {
         }
       })
       .catch(err => console.log('ERROR:', err));
+  };
+};
+
+export const initAuth = () => {
+  let token = localStorage.getItem('token');
+  return dispatch => {
+    if (token) {
+      dispatch(receiveLogin(token));
+    }
   };
 };

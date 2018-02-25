@@ -1,6 +1,7 @@
 const User = require('../model/UserSchema');
 const PassportLocalStrategy = require('passport-local').Strategy;
 const jwt = require('jsonwebtoken');
+const secret = require('../config').jwtSecret;
 
 /**
  * the Passport Local Strategy Login object.
@@ -46,7 +47,7 @@ module.exports = new PassportLocalStrategy(
           sub: user._id
         };
 
-        const token = jwt.sign(payload, 'a secret');
+        const token = jwt.sign(payload, secret);
         const data = {
           name: user.username
         };

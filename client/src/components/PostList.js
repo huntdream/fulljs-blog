@@ -19,7 +19,7 @@ class PostList extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchPosts('http://localhost:3000/posts');
+    this.props.fetchPosts('posts');
   }
 
   renderList(posts) {

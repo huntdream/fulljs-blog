@@ -10,6 +10,7 @@ const activeNav = {
 
 class Header extends Component {
   render() {
+    let { isAuthenticated, location } = this.props;
     return (
       <div className="top-bar">
         <div className="global-nav">
@@ -37,23 +38,32 @@ class Header extends Component {
                     Moments
                   </NavLink>
                 </li>
-                <li className="nav-list__item">
-                  <NavLink to="/newpost" activeStyle={activeNav}>
-                    New
-                  </NavLink>
-                </li>
               </ul>
             </div>
             <div className="nav-inner-right">
-              <div className="sign-in-up">
-                <Button
-                  variant="raised"
-                  color="primary"
-                  size="small"
-                  component={props => <Link to="/signin" {...props} />}
-                >
-                  Sign In
-                </Button>
+              <div
+                className="sign-in-up"
+                style={{ display: location.pathname === '/signin' && 'none' }}
+              >
+                {isAuthenticated ? (
+                  <Button
+                    variant="raised"
+                    color="primary"
+                    size="small"
+                    component={props => <Link to="/newpost" {...props} />}
+                  >
+                    New
+                  </Button>
+                ) : (
+                  <Button
+                    variant="raised"
+                    color="primary"
+                    size="small"
+                    component={props => <Link to="/signin" {...props} />}
+                  >
+                    Sign in
+                  </Button>
+                )}
               </div>
             </div>
           </div>

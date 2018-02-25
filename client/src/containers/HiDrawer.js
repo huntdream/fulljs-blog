@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleDrawer } from '../redux/actions/';
+import { toggleDrawer } from '../redux/actions/control';
 import Drawer from '../components/Drawer';
 
 const mapStateToProps = ({ isDrawerOpen }) => ({
