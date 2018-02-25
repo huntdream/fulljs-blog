@@ -11,3 +11,6 @@
     box-shadow:none
   }
   ```
+
+* setTimeout loop is not render blocking
+  microtasks block rendering

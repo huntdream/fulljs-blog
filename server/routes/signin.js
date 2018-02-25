@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
         message: 'Could not process the form.'
       });
     }
-
+    console.log(token);
     return res.status(200).json({
       success: true,
       message: 'Log in successful',

@@ -5,7 +5,7 @@ const PostSchema = new Schema({
   title: String,
   author: String,
   link: { type: String, unique: true },
-  body: String,
+  content: String,
   comments: [{ body: String, date: Date }],
   date: { type: Date, default: Date.now },
   meta: {

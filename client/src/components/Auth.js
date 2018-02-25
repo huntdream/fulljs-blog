@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import FormItem from './FormItem/FormItem';
 import Button from 'material-ui/Button';
-import Auth from '../modules/Auth';
 
 class Sign extends Component {
   constructor() {
     super();
     this.state = {
       username: '',
-      password: '',
-      message: ''
+      password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this._onChange = this._onChange.bind(this);
@@ -28,30 +26,7 @@ class Sign extends Component {
       password: this.state.password
     };
     console.log(JSON.stringify(data));
-    fetch(`http://localhost:3000/${this.props.path}`, {
-      method: 'POST',
-      // mode: 'cors',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-        this.setState({ message: res.message });
-        if (res.success) {
-          if (this.props.path === 'signin') {
-            Auth.authenticateUser(res.token);
-            // this.props.history.push('/');
-          }
-          // if (this.props.path === 'signup') {
-          //   this.props.history.push('/signin');
-          // }
-        }
-      })
-      .catch(error => console.error('Error:', error));
+    this.props.login(data);
   }
 
   render() {
@@ -62,7 +37,7 @@ class Sign extends Component {
             label="Username"
             refName="username"
             onChange={this._onChange}
-            error={this.state.message}
+            error={this.props.message}
           />
           <FormItem
             type="password"
@@ -71,7 +46,7 @@ class Sign extends Component {
             onChange={this._onChange}
           />
           <Button type="submit" variant="raised" color="primary">
-            {this.props.label}
+            Sign In
           </Button>
         </form>
       </div>

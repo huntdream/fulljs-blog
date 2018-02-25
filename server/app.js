@@ -11,7 +11,8 @@ const localSignin = require('./passport/local-signin');
 const localSignup = require('./passport/local-signup');
 
 //connect mongo db
-mongoose.connect('mongodb://127.0.0.1:27017/blog');
+const db = require('./config/db');
+mongoose.connect(db);
 const User = require('./model/UserSchema');
 
 // import routes

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
 
 const activeNav = {
   borderBottom: '2px solid rgb(28, 148, 224)',
@@ -41,21 +42,18 @@ class Header extends Component {
                     New
                   </NavLink>
                 </li>
-                <li className="nav-list__item">
-                  <NavLink to="/signup" activeStyle={activeNav}>
-                    Sign Up
-                  </NavLink>
-                </li>
-                <li className="nav-list__item">
-                  <NavLink to="/signin" activeStyle={activeNav}>
-                    Sign In
-                  </NavLink>
-                </li>
               </ul>
             </div>
             <div className="nav-inner-right">
-              <div className="search-btn">
-                <i className="material-icons">search</i>
+              <div className="sign-in-up">
+                <Button
+                  variant="raised"
+                  color="primary"
+                  size="small"
+                  component={props => <Link to="/signin" {...props} />}
+                >
+                  Sign In
+                </Button>
               </div>
             </div>
           </div>

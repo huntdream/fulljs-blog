@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { CircularProgress } from 'material-ui/Progress';
 import img from '../assets/wings.jpg';
 
 const linkStyle = {
@@ -17,20 +18,20 @@ class PostList extends Component {
     this.renderList = this.renderList.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchPosts('http://localhost:3000/poetries?author=李白');
+  componentWillMount() {
+    this.props.fetchPosts('http://localhost:3000/posts');
   }
 
   renderList(posts) {
-    return posts.map(item => (
-      <div key={item.id} className="post-item md-box-shadow">
+    return posts.map((item, idx) => (
+      <div key={idx} className="post-item md-box-shadow">
         <div className="post-item__img">
-          <Link to={`/${item.id}`} style={linkStyle} />
+          <Link to={`/${item.link}`} style={linkStyle} />
         </div>
         <div className="post-item__content">
           <div className="content__wrapper">
             <h3 className="post-item__title">
-              <Link to={`/${item.id}`}>{item.title}</Link>
+              <Link to={`/${item.link}`}>{item.title}</Link>
             </h3>
             <div className="post-item__author">{item.author}</div>
           </div>
@@ -41,7 +42,11 @@ class PostList extends Component {
 
   render() {
     if (this.props.isFetching) {
-      return <p>Loading</p>;
+      return (
+        <div className="page-lists">
+          <CircularProgress size={30} thickness={4} />
+        </div>
+      );
     }
 
     return (

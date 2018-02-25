@@ -5,10 +5,7 @@ import HiHeader from '../containers/HiHeader';
 import Posts from '../containers/Posts';
 import HiDrawer from '../containers/HiDrawer';
 import NewPost from './NewPost.js';
-import Sign from './Sign';
-
-const Signin = (props) => <Sign label="Sign In" path="signin" {...props}/>;
-const Signup = (props) => <Sign label="Sign Up" path="signup" {...props}/>;
+import Login from '../containers/Login';
 
 class App extends Component {
   render() {
@@ -30,8 +27,8 @@ class App extends Component {
                   )}
                 />
                 <Route path="/newpost" component={NewPost} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/signin" component={Signin} />
+                {/* <Route path="/signup" component={Signup} /> */}
+                <Route path="/signin" component={Login} />
               </div>
             </div>
           </div>

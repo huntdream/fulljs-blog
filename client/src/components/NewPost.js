@@ -11,7 +11,7 @@ class NewPost extends Component {
     this.state = {
       title: '',
       link: '',
-      text: ''
+      content: ''
     };
     this._onChange = this._onChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -25,17 +25,24 @@ class NewPost extends Component {
   }
 
   handleChange(value) {
-    this.setState({ text: value });
+    this.setState({ content: value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    fetch('http://localhost:3000/post', {
-      method: 'POST'
+    const { title, link, content } = this.state;
+    fetch('http://localhost:3000/posts', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title, link, content })
     })
       .then(res => {
         if (res.status === 200) {
           console.log('Post submitted successful');
+          return res.json();
         }
       })
       .catch(err => console.log(err));
@@ -58,7 +65,7 @@ class NewPost extends Component {
           />
           <div className="text-editor">
             <ReactQuill
-              value={this.state.text}
+              value={this.state.content}
               onChange={this.handleChange}
               theme="snow"
             />

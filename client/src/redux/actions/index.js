@@ -4,7 +4,6 @@ import {
   ITEMS_HAVE_ERROR,
   IS_DRAWER_OPEN
 } from './constants';
-import axios from 'axios';
 
 export const itemsAreLoading = bool => ({
   type: ITEMS_ARE_LOADING,

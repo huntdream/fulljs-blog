@@ -128,9 +128,10 @@ input:required {
   padding: 0 14px 0 10px;
 }
 
-.toggle-menu > i {
-  margin: 11px 10px;
-  cursor: pointer;
+.sign-in-up {
+  display: inline-flex;
+  height: 47px;
+  align-items: center;
 }
 
 /* 2. Drawer*/
@@ -276,9 +277,9 @@ input:required {
 
 /* New Post */
 .text-editor {
-  max-width: 80%;
+  max-width: 180px;
   margin: 0 15px;
-  min-width: 180px;
+  min-width: 80%;
 }
 
 .submit-btn {

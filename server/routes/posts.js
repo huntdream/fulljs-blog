@@ -8,6 +8,17 @@ router.get('/', function(req, res) {
   });
 });
 
-router.post('/', function(req, res) {});
+router.post('/', function(req, res, next) {
+  const newPost = new Post(req.body);
+
+  newPost.save(err => {
+    if (err) {
+      if (err.code === 11000) {
+        return res.json({ sucess: false, message: 'Link already exists' });
+      }
+    }
+    return res.status(200).json({ success: true, message: 'successful' });
+  });
+});
 
 module.exports = router;
