@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
+import menuIcon from '../assets/menu.png';
 
 const activeNav = {
   borderBottom: '2px solid rgb(28, 148, 224)',
@@ -24,7 +25,7 @@ class Header extends Component {
                       aria-label="Menu"
                       onClick={this.props.openDrawer}
                     >
-                      <i className="material-icons">menu</i>
+                      <img src={menuIcon} />
                     </IconButton>
                   </div>
                 </li>

@@ -3,7 +3,8 @@ import ReactQuill from 'react-quill';
 import FormItem from './FormItem/FormItem';
 import 'react-quill/dist/quill.snow.css';
 import Button from 'material-ui/Button';
-import { dev, prod } from '../config/host';
+import { CircularProgress } from 'material-ui/Progress';
+import { host } from '../config/host';
 
 class NewPost extends Component {
   constructor() {
@@ -12,7 +13,8 @@ class NewPost extends Component {
     this.state = {
       title: '',
       link: '',
-      content: ''
+      content: '',
+      isSending: false
     };
     this._onChange = this._onChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +35,10 @@ class NewPost extends Component {
     e.preventDefault();
     const { title, link, content } = this.state;
     const token = localStorage.getItem('token');
-    fetch(`${prod}posts`, {
+    this.setState({
+      isSending: true
+    });
+    fetch(`${host}posts`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -47,6 +52,9 @@ class NewPost extends Component {
         console.log(res);
         if (res.success) {
           console.log('Successful');
+          this.setState({
+            isSending: false
+          });
         } else {
           throw Error(res.message);
         }
@@ -55,6 +63,7 @@ class NewPost extends Component {
   }
 
   render() {
+    let { isSending, content } = this.state;
     return (
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>
@@ -70,15 +79,23 @@ class NewPost extends Component {
           />
           <div className="text-editor">
             <ReactQuill
-              value={this.state.content}
+              value={content}
               onChange={this.handleChange}
               theme="snow"
             />
           </div>
           <div className="submit-btn">
-            <Button type="submit" variant="raised" color="primary">
+            <Button
+              type="submit"
+              variant="raised"
+              color="primary"
+              disabled={isSending}
+            >
               Submit
             </Button>
+            {isSending && (
+              <CircularProgress size={24} className="loading-circle" />
+            )}
           </div>
         </form>
       </div>

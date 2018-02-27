@@ -1,2 +1,2 @@
-export const dev = 'http://localhost:3000/';
-export const prod = 'http://blog.maoyu.info/';
+// export const host = 'http://localhost:3000/';
+export const host = 'http://blog.maoyu.info/';

@@ -26,10 +26,6 @@ h4 {
   margin: 0;
 }
 
-ul {
-  list-style: none;
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -63,6 +59,10 @@ input:required {
   right: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   z-index: 6;
+}
+
+.top-bar ul {
+  list-style: none;
 }
 
 .global-nav {
@@ -142,7 +142,7 @@ input:required {
   left: 0;
   margin-top: 47px;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 47px);
   pointer-events: none;
   overflow: hidden;
   z-index: 900;
@@ -191,7 +191,7 @@ input:required {
   background-position: 0 center;
 }
 
-.drawer__content {
+.drawer__user {
   background-color: #fff;
 }
 
@@ -209,7 +209,7 @@ input:required {
   box-sizing: border-box;
 }
 
-.drawer__user {
+.drawer__username {
   position: absolute;
   left: 90px;
   top: 103px;
@@ -221,6 +221,18 @@ input:required {
   font-size: 18px;
 }
 
+.drawer__menu {
+  background-color: #fff;
+  border-top: 1px solid #66757f;
+  display: flex;
+  flex: 1;
+}
+
+.drawer__settings {
+  height: 40px;
+  background-color: rgba(123, 174, 236, 0.98);
+}
+
 /* 3. Page */
 
 .page-container {
@@ -228,7 +240,7 @@ input:required {
 }
 
 .page-outer {
-  padding: 64px 14px 15px;
+  padding: 64px 10px 15px;
   max-width: 1190px;
   margin: 0 auto;
   display: flex;
@@ -237,7 +249,10 @@ input:required {
 
 .content-main {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
 /* 3.1 Page List */
 
 .page-lists {
@@ -284,6 +299,16 @@ input:required {
 
 .submit-btn {
   margin: 20px 0;
+  position: relative;
+}
+
+.loading-circle {
+  position: absolute;
+  color: green;
+  top: 50%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -12px;
 }
 
 .ql-editor {
@@ -303,4 +328,33 @@ input:required {
   padding-top: 30px;
   height: 100%;
   justify-content: center;
+}
+
+/* Article */
+.article-wrapper {
+  width: 740px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.article {
+  width: 90%;
+}
+
+.article-title {
+  margin: 20px 0;
+  font-size: 42px;
+  font-weight: 600;
+  width: 100%;
+  line-height: 1.04;
+  color: rgba(0, 0, 0, 0.84);
+  text-align: center;
+}
+
+.article-content {
+  padding: 10px;
+}
+
+.article-content h1 {
+  line-height: 1.04;
 }

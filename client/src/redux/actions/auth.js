@@ -1,9 +1,8 @@
-import { dev, prod } from '../../config/host';
+import { host } from '../../config/host';
 // constants
 const REQUEST_LOGIN = 'REQUEST_LOGIN';
 const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
 const ERROR_LOGIN = 'ERROR_LOGIN';
-const AUTHENTICATE = 'AUTHENTICATE';
 
 const requestLogin = creds => ({
   type: REQUEST_LOGIN,
@@ -12,15 +11,12 @@ const requestLogin = creds => ({
   creds
 });
 
-const authenticate = bool => ({
-  type: AUTHENTICATE,
-  isAuthenticated: bool
-});
-
-const receiveLogin = token => ({
+const receiveLogin = (token, username, message) => ({
   type: RECEIVE_LOGIN,
   isFetching: false,
   isAuthenticated: true,
+  username,
+  message,
   token
 });
 
@@ -42,14 +38,16 @@ export const login = (creds, path) => {
 
   return dispatch => {
     dispatch(requestLogin);
-    fetch(prod + path, config)
+    fetch(host + path, config)
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         if (res.success) {
           localStorage.setItem('token', res.token);
-          dispatch(receiveLogin(res.token));
+          dispatch(receiveLogin(res.token, res.username, res.message));
         } else {
           dispatch(errorLogin(res.message));
+          throw Error('err');
         }
       })
       .catch(err => console.log('ERROR:', err));

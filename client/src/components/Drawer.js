@@ -46,14 +46,16 @@ class Drawer extends Component {
           }
         >
           <div className="drawer__bg" style={style.backgroundImage} />
-          <div className="drawer__content">
+          <div className="drawer__user">
             <div className="drawer__avatar">
               <img src={avatar} alt="avatar" />
             </div>
-            <div className="drawer__user">
+            <div className="drawer__username">
               <div className="user__name">Yu Mao</div>
             </div>
           </div>
+          <div className="drawer__menu">Menu</div>
+          <div className="drawer__settings">helo</div>
         </div>
       </aside>
     );

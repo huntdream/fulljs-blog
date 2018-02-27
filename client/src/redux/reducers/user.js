@@ -20,6 +20,7 @@ export function userAuthenticate(state = initialState, action) {
         ...state,
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
+        message: action.message,
         token: action.token
       };
     case 'ERROR_LOGIN':

@@ -7,7 +7,8 @@ class Sign extends Component {
     super();
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      isSending: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this._onChange = this._onChange.bind(this);
@@ -25,10 +26,8 @@ class Sign extends Component {
       username: this.state.username,
       password: this.state.password
     };
+
     this.props.login(data);
-    if (this.props.isAuthenticated) {
-      this.props.history.push('/');
-    }
   }
 
   render() {

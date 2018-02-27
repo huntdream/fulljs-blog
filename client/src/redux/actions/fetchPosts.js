@@ -4,7 +4,7 @@ import {
   ITEMS_HAVE_ERROR
 } from './constants';
 
-import { dev, prod } from '../../config/host';
+import { host } from '../../config/host';
 
 export const itemsAreLoading = bool => ({
   type: ITEMS_ARE_LOADING,
@@ -25,13 +25,12 @@ export const itemFetchData = path => {
   return dispatch => {
     dispatch(itemsAreLoading(true));
 
-    fetch(prod + path)
+    fetch(host + path)
       .then(response => {
         console.log(response);
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
-
         return response.json();
       })
       .then(res => {
