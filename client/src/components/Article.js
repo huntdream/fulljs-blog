@@ -33,7 +33,6 @@ class Article extends Component {
           isFetching: false
         })
       );
-    console.log('hi');
   }
 
   renderArticle(article) {
@@ -55,7 +54,7 @@ class Article extends Component {
     console.log(article);
     if (isFetching) {
       return (
-        <div className="article-wrapper">
+        <div style={{ alignSelf: 'center' }}>
           <CircularProgress size={30} thickness={4} />
         </div>
       );
