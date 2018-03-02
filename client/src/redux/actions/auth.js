@@ -3,6 +3,7 @@ import { host } from '../../config/host';
 const REQUEST_LOGIN = 'REQUEST_LOGIN';
 const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
 const ERROR_LOGIN = 'ERROR_LOGIN';
+const LOGOUT = 'LOGOUT';
 
 const requestLogin = creds => ({
   type: REQUEST_LOGIN,
@@ -23,6 +24,12 @@ const receiveLogin = (token, username, message) => ({
 const errorLogin = message => ({
   type: ERROR_LOGIN,
   isFetching: false,
+  isAuthenticated: false,
+  message
+});
+
+const logout = message => ({
+  type: LOGOUT,
   isAuthenticated: false,
   message
 });
@@ -60,5 +67,28 @@ export const initAuth = () => {
     if (token) {
       dispatch(receiveLogin(token));
     }
+  };
+};
+
+export const logoutAction = path => {
+  console.log('hello');
+  return dispatch => {
+    fetch(host + 'logout', {
+      method: 'POST'
+    })
+      .then(res => {
+        if (res.status === 200) {
+          return res.json();
+        } else {
+          throw Error('Log out failed');
+        }
+      })
+      .then(res => {
+        if (res.success) {
+          localStorage.removeItem('token');
+          dispatch(logout(res.message));
+        }
+      })
+      .catch(err => console.log(err));
   };
 };

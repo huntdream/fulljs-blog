@@ -6,7 +6,7 @@ let initialState = {
   message: ''
 };
 
-export function userAuthenticate(state = initialState, action) {
+export function auth(state = initialState, action) {
   switch (action.type) {
     case 'REQUEST_LOGIN':
       return {
@@ -27,6 +27,12 @@ export function userAuthenticate(state = initialState, action) {
       return {
         ...state,
         isFetching: action.isFetching,
+        isAuthenticated: action.isAuthenticated,
+        message: action.message
+      };
+    case 'LOGOUT':
+      return {
+        ...state,
         isAuthenticated: action.isAuthenticated,
         message: action.message
       };

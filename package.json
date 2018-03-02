@@ -4,20 +4,14 @@
   "description": "A react-express blog system",
   "main": "index.js",
   "scripts": {
-    "start-client": "cd ./client && set port=3001 & react-scripts start",
-    "start-server": "nodemon ./server/bin/www",
-    "build-react": "cd ./client && react-scripts build",
-    "test-react": "cd ./client && react-scripts test --env=jsdom",
-    "eject-react": "cd ./client && react-scripts eject"
+    "start": "nodemon ./server/bin/www",
+    "client": "cd ./client && npm start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huntdream/react-express-blog.git"
   },
-  "keywords": [
-    "react",
-    "express"
-  ],
+  "keywords": ["react", "express"],
   "author": "Yu Mao",
   "license": "MIT",
   "bugs": {

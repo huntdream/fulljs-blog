@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
 import menuIcon from '../assets/menu.png';
+import HiLogout from '../containers/HiLogout';
 
 const activeNav = {
   borderBottom: '2px solid rgb(28, 148, 224)',
@@ -25,7 +26,7 @@ class Header extends Component {
                       aria-label="Menu"
                       onClick={this.props.openDrawer}
                     >
-                      <img src={menuIcon} />
+                      <img src={menuIcon} alt="menu" />
                     </IconButton>
                   </div>
                 </li>
@@ -47,14 +48,17 @@ class Header extends Component {
                 style={{ display: location.pathname === '/signin' && 'none' }}
               >
                 {isAuthenticated ? (
-                  <Button
-                    variant="raised"
-                    color="primary"
-                    size="small"
-                    component={props => <Link to="/newpost" {...props} />}
-                  >
-                    New
-                  </Button>
+                  <React.Fragment>
+                    <Button
+                      variant="raised"
+                      color="primary"
+                      size="small"
+                      component={props => <Link to="/newpost" {...props} />}
+                    >
+                      New
+                    </Button>
+                    <HiLogout />
+                  </React.Fragment>
                 ) : (
                   <Button
                     variant="raised"

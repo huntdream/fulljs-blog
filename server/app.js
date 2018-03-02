@@ -12,16 +12,22 @@ const localSignup = require('./passport/local-signup');
 
 //connect mongo db
 const db = require('./config/').db;
-mongoose.connect(db);
-const User = require('./model/UserSchema');
+mongoose.connect(db, err => {
+  if (err) throw err;
+  console.log('Connected to MongoDB...');
+});
 
+// init user
+// const User = require('./model/UserSchema');
+// const newUser = new User({ username: 'maoyu', password: 'maoyu' });
+// newUser.save();
 // import routes
 const index = require('./routes/index');
 const posts = require('./routes/posts');
 const poetries = require('./routes/poetries');
 const signup = require('./routes/signup');
 const signin = require('./routes/signin');
-
+const logout = require('./routes/logout');
 const app = express();
 
 // view engine setup
@@ -67,6 +73,7 @@ app.use('/posts', posts);
 app.use('/poetries', poetries);
 app.use('/signup', signup);
 app.use('/signin', signin);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

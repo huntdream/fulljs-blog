@@ -3,21 +3,20 @@ const router = express.Router();
 const Post = require('../model/PostSchema');
 const applyAuthCheck = require('../passport/auth-check');
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   Post.find({})
     .sort({ date: -1 })
-    .exec(function(err, posts) {
+    .exec((err, posts) => {
       if (err) {
         res.json({ success: false, error: err });
       }
-      console.log(posts);
       posts.length
         ? res.json({ success: true, posts })
         : res.json({ success: false, error: 'NO DATA' });
     });
 });
 
-router.get('/:link', function(req, res, next) {
+router.get('/:link', (req, res, next) => {
   let { link } = req.params;
   Post.findOne({ link: link }, function(err, post) {
     if (err) {
@@ -27,7 +26,7 @@ router.get('/:link', function(req, res, next) {
   });
 });
 
-router.post('/', applyAuthCheck, function(req, res, next) {
+router.post('/', applyAuthCheck, (req, res, next) => {
   const newPost = new Post(req.body);
 
   newPost.save(err => {
