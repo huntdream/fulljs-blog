@@ -261,23 +261,24 @@ input:required {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .post-item {
   display: flex;
-  flex-direction: row;
-  height: 260px;
-  width: 530px;
-  margin-bottom: 15px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 360px;
+  width: 300px;
+  margin: 0 10px 14px;
 }
 
 .post-item__content {
-  flex-basis: 50%;
+  flex-basis: 62.8%;
 }
 
 .post-item__img {
-  flex-basis: 50%;
+  flex-basis: 37.2%;
 }
 
 .content__wrapper {
@@ -357,4 +358,10 @@ input:required {
 
 .article-content h1 {
   line-height: 1.04;
+}
+
+@media (max-width: 500px) {
+  .post-item {
+    margin-right: 0;
+  }
 }
