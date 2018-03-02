@@ -4,14 +4,13 @@
 .idea
 
 # dependencies
-/server/node_modules
-/client/node_modules
+/node_modules
 
 # testing
 /coverage
 
 # production
-/build
+/client/build
 
 # misc
 .DS_Store

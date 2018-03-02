@@ -1,0 +1,70 @@
+{
+  "name": "react-express-blog",
+  "version": "1.0.0",
+  "description": "A react-express blog system",
+  "main": "index.js",
+  "scripts": {
+    "start-client": "cd ./client && set port=3001 & react-scripts start",
+    "start-server": "nodemon ./server/bin/www",
+    "build-react": "cd ./client && react-scripts build",
+    "test-react": "cd ./client && react-scripts test --env=jsdom",
+    "eject-react": "cd ./client && react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntdream/react-express-blog.git"
+  },
+  "keywords": [
+    "react",
+    "express"
+  ],
+  "author": "Yu Mao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huntdream/react-express-blog/issues"
+  },
+  "homepage": "https://github.com/huntdream/react-express-blog#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "draft-js": "^0.10.5",
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^4.1.0",
+    "material-design-icons": "^3.0.1",
+    "material-ui": "^1.0.0-beta.34",
+    "normalize.css": "^7.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-loadable": "^5.3.1",
+    "react-quill": "^1.2.4",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "bcrypt": "^1.0.3",
+    "body-parser": "~1.17.1",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-session": "^1.15.6",
+    "graphql": "^0.13.1",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.6",
+    "morgan": "~1.8.1",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.14.7",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "puppeteer": "^1.1.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-react": "^7.6.1"
+  }
+}
