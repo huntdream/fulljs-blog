@@ -1,5 +1,7 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
 
 gulp.task('imagemin', () =>
   gulp
@@ -16,3 +18,10 @@ gulp.task('imagemin', () =>
     )
     .pipe(gulp.dest('src/assets/'))
 );
+
+gulp.task('autoprefixer', () => {
+  gulp
+    .src('src/App.css')
+    .pipe(postcss([autoprefixer()]))
+    .pipe(gulp.dest('dest'));
+});
