@@ -54,7 +54,19 @@ class Drawer extends Component {
               <div className="user__name">Yu Mao</div>
             </div>
           </div>
-          <div className="drawer__menu">Menu</div>
+          <div className="drawer__menu">
+            <ul className="menu-list">
+              <li className="list-item">
+                <a className="list-item__link">Category</a>
+              </li>
+              <li className="list-item">
+                <a className="list-item__link">Messages</a>
+              </li>
+              <li className="list-item">
+                <a className="list-item__link">About</a>
+              </li>
+            </ul>
+          </div>
           <div className="drawer__settings">helo</div>
         </div>
       </aside>

@@ -15,7 +15,7 @@ body {
   background-color: #fff;
   position: relative;
   line-height: 20px;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: Arial, 'Microsoft YaHei', sans-serif;
   overflow-y: scroll;
 }
 
@@ -50,6 +50,29 @@ input:required {
     0px 8px 8px 0px rgba(0, 0, 0, 0.24);
 }
 
+/* Document scrollbar */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #0ae;
+
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    color-stop(0.5, rgba(255, 255, 255, 0.2)),
+    color-stop(0.5, transparent),
+    to(transparent)
+  );
+}
 /* 1. Top Bar */
 
 .top-bar {
@@ -193,6 +216,7 @@ input:required {
 
 .drawer__user {
   background-color: #fff;
+  height: 60px;
 }
 
 .drawer__avatar {
@@ -223,9 +247,36 @@ input:required {
 
 .drawer__menu {
   background-color: #fff;
-  border-top: 1px solid #66757f;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
   display: flex;
   flex: 1;
+}
+
+.menu-list {
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+.list-item {
+  width: 100%;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.list-item__link {
+  line-height: 1rem;
+  display: block;
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.list-item__link:hover {
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .drawer__settings {
@@ -281,6 +332,14 @@ input:required {
   flex-basis: 37.2%;
 }
 
+.post-item__img > a {
+  display: block;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
 .content__wrapper {
   padding: 8px;
   display: flex;
@@ -333,13 +392,18 @@ input:required {
 
 /* Article */
 .article-wrapper {
-  width: 740px;
+  min-height: 400px;
+  width: 840px;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
+  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
 }
 
 .article {
-  width: 90%;
+  margin: 0 auto;
+  width: 740px;
+  max-width: 100%;
+  padding: 20px 0;
 }
 
 .article-title {

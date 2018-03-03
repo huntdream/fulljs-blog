@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { CircularProgress } from 'material-ui/Progress';
-import img from '../assets/wings.jpg';
-
-const linkStyle = {
-  backgroundImage: `url(${img})`,
-  display: 'block',
-  height: '100%',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: '50% 50%'
-};
+import PostCard from './PostCard';
 
 class PostList extends Component {
   constructor(props) {
@@ -23,21 +14,7 @@ class PostList extends Component {
   }
 
   renderList(posts) {
-    return posts.map((item, idx) => (
-      <div key={idx} className="post-item md-box-shadow">
-        <div className="post-item__img">
-          <Link to={`/${item.link}`} style={linkStyle} />
-        </div>
-        <div className="post-item__content">
-          <div className="content__wrapper">
-            <h3 className="post-item__title">
-              <Link to={`/${item.link}`}>{item.title}</Link>
-            </h3>
-            <div className="post-item__author">{item.author}</div>
-          </div>
-        </div>
-      </div>
-    ));
+    return posts.map((item, idx) => <PostCard item={item} key={idx} />);
   }
 
   render() {
