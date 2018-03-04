@@ -12,7 +12,7 @@ body {
   height: 100%;
   margin: 0;
   font-size: 16px;
-  background-color: #fff;
+  background-color: #f4f4ef;
   position: relative;
   line-height: 20px;
   font-family: Arial, 'Microsoft YaHei', sans-serif;
@@ -418,6 +418,7 @@ input:required {
 
 /* Article */
 .article-wrapper {
+  background-color: #fff;
   min-height: 400px;
   width: 840px;
   max-width: 100%;

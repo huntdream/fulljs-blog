@@ -4,9 +4,9 @@ import Button from 'material-ui/Button';
 import { NavLink } from 'react-router-dom';
 
 const activeStyle = {
+  color: '#2e3d49',
   background: '#fff',
-  borderBottom: '1px solid #fff',
-  color: '#7d97ad'
+  borderBottom: '1px solid #fff'
 };
 
 class Sign extends Component {
