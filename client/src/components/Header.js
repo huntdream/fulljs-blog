@@ -45,7 +45,12 @@ class Header extends Component {
             <div className="nav-inner-right">
               <div
                 className="sign-in-up"
-                style={{ display: location.pathname === '/signin' && 'none' }}
+                style={{
+                  display:
+                    (location.pathname === '/signin' ||
+                      location.pathname === '/signup') &&
+                    'none'
+                }}
               >
                 {isAuthenticated ? (
                   <React.Fragment>

@@ -12,7 +12,7 @@ const mapStateToProps = ({ auth }) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: creds => dispatch(login(creds, 'signin'))
+    login: (creds, path) => dispatch(login(creds, path))
   };
 };
 

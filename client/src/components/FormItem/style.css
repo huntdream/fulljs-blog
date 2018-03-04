@@ -1,10 +1,17 @@
+.form-group {
+  margin: 25px 0 40px;
+  width: 100%;
+}
+
 .form-item {
   height: auto;
-  margin-bottom: 60px;
   position: relative;
   display: flex;
-  width: 80%;
-  max-width: 370px;
+  max-width: 100%;
+}
+
+.form-item + .form-item {
+  margin-top: 40px;
 }
 
 .md-input {

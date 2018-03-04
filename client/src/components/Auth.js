@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import FormItem from './FormItem/FormItem';
 import Button from 'material-ui/Button';
+import { NavLink } from 'react-router-dom';
+
+const activeStyle = {
+  background: '#fff',
+  borderBottom: '1px solid #fff',
+  color: '#7d97ad'
+};
 
 class Sign extends Component {
   constructor() {
@@ -27,27 +34,50 @@ class Sign extends Component {
       password: this.state.password
     };
 
-    this.props.login(data);
+    this.props.login(data, this.props.match.path);
   }
 
   render() {
+    let { path } = this.props.match;
+    let label = {
+      '/signin': 'Sign In',
+      '/signup': 'Sign Up'
+    };
     return (
       <div className="form-container">
-        <form onSubmit={this.handleSubmit}>
-          <FormItem
-            label="Username"
-            refName="username"
-            onChange={this._onChange}
-            error={this.props.message}
-          />
-          <FormItem
-            type="password"
-            label="Password"
-            refName="password"
-            onChange={this._onChange}
-          />
-          <Button type="submit" variant="raised" color="primary">
+        <div className="sign-pane">
+          <NavLink
+            className="sign-pane__item"
+            to="/signin"
+            activeStyle={activeStyle}
+          >
             Sign In
+          </NavLink>
+          <NavLink
+            className="sign-pane__item"
+            to="/signup"
+            activeStyle={activeStyle}
+          >
+            Sign Up
+          </NavLink>
+        </div>
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <FormItem
+              label="Username"
+              refName="username"
+              onChange={this._onChange}
+              error={this.props.message}
+            />
+            <FormItem
+              type="password"
+              label="Password"
+              refName="password"
+              onChange={this._onChange}
+            />
+          </div>
+          <Button type="submit" variant="raised" color="primary">
+            {label[path]}
           </Button>
         </form>
       </div>

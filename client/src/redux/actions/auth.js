@@ -73,7 +73,7 @@ export const initAuth = () => {
 export const logoutAction = path => {
   console.log('hello');
   return dispatch => {
-    fetch(host + 'logout', {
+    fetch(host + '/logout', {
       method: 'POST'
     })
       .then(res => {

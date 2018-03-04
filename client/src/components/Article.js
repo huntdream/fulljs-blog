@@ -17,7 +17,7 @@ class Article extends Component {
     this.setState({
       isFetching: true
     });
-    fetch(host + 'posts/' + link)
+    fetch(host + '/posts/' + link)
       .then(res => res.json())
       .then(res => {
         if (res.success) {

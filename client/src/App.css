@@ -376,18 +376,44 @@ input:required {
 }
 
 /* Form */
-.form-container form {
-  max-width: 890px;
-  min-height: 400px;
+.form-container {
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 620px;
   margin: 0 auto;
+  margin-top: 36px;
+}
+
+.sign-pane {
+  display: flex;
+}
+
+.sign-pane__item {
+  display: block;
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #fafbfc;
+  border-bottom: 1px solid #dbe2e8;
+  font-weight: 600;
+  color: #7d97ad;
+}
+
+.sign-pane__item:last-child {
+  border-left: 1px solid #dbe2e8;
+}
+
+.form-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  box-shadow: var(--box-shadow);
-  padding-top: 30px;
-  height: 100%;
+  padding: 60px;
   justify-content: center;
+  height: 400px;
+  box-sizing: border-box;
 }
 
 /* Article */

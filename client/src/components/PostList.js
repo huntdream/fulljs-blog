@@ -10,7 +10,7 @@ class PostList extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchPosts('posts');
+    this.props.fetchPosts('/posts');
   }
 
   renderList(posts) {

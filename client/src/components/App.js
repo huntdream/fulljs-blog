@@ -43,9 +43,9 @@ class App extends Component {
                       </h1>
                     )}
                   />
-                  <Route path="/newpost" component={AsyncNewPost} />
-                  {/* <Route path="/signup" component={Signup} /> */}
-                  <Route path="/signin" component={AsyncLogin} />
+                  <Route exact path="/newpost" component={AsyncNewPost} />
+                  <Route exact path="/signup" component={AsyncLogin} />
+                  <Route exact path="/signin" component={AsyncLogin} />
                   <Route path="/:link" component={HiArticle} />
                 </Switch>
               </div>
