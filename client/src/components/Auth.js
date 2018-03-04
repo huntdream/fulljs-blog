@@ -6,7 +6,8 @@ import { NavLink } from 'react-router-dom';
 const activeStyle = {
   color: '#2e3d49',
   background: '#fff',
-  borderBottom: '1px solid #fff'
+  borderBottom: '1px solid #fff',
+  cursor: 'default'
 };
 
 class Sign extends Component {
