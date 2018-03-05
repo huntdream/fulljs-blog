@@ -5,17 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/bin/www",
-    "client": "cd ./client && npm start",
-    "client-pc": "cd ./client && npm run start-pc"
+    "client": "cd ./client && yarn start",
+    "client-pc": "cd ./client && yarn run start-pc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huntdream/react-express-blog.git"
   },
-  "keywords": [
-    "react",
-    "express"
-  ],
+  "keywords": ["react", "express"],
   "author": "Yu Mao",
   "license": "MIT",
   "bugs": {

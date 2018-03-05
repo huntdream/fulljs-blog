@@ -71,7 +71,6 @@ export const initAuth = () => {
 };
 
 export const logoutAction = path => {
-  console.log('hello');
   return dispatch => {
     fetch(host + '/logout', {
       method: 'POST'

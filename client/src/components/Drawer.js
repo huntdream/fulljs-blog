@@ -67,7 +67,6 @@ class Drawer extends Component {
               </li>
             </ul>
           </div>
-          <div className="drawer__settings">helo</div>
         </div>
       </aside>
     );

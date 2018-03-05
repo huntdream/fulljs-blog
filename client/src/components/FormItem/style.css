@@ -7,11 +7,9 @@
   height: auto;
   position: relative;
   display: flex;
-  max-width: 100%;
-}
-
-.form-item + .form-item {
-  margin-top: 40px;
+  max-width: 370px;
+  margin: 40px auto 0;
+  width: 90%;
 }
 
 .md-input {

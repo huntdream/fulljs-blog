@@ -14,6 +14,7 @@ class NewPost extends Component {
       title: '',
       link: '',
       content: '',
+      category: '',
       isSending: false
     };
     this._onChange = this._onChange.bind(this);
@@ -38,7 +39,7 @@ class NewPost extends Component {
     this.setState({
       isSending: true
     });
-    fetch(`${host}posts`, {
+    fetch(`${host}/posts`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -59,7 +60,12 @@ class NewPost extends Component {
           throw Error(res.message);
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.setState({
+          isSending: false
+        });
+        console.log(err);
+      });
   }
 
   render() {
@@ -76,6 +82,11 @@ class NewPost extends Component {
             label="Link"
             refName="link"
             onChange={e => this._onChange(e, 'link')}
+          />
+          <FormItem
+            label="Category"
+            refName="category"
+            onChange={e => this._onChange(e, 'category')}
           />
           <div className="text-editor">
             <ReactQuill
