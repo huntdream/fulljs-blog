@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import img from '../assets/wings.jpg';
 
-const linkStyle = {
-  backgroundImage: `url(${img})`
-};
-
 const PostCard = ({ item }) => {
   return (
     <div className="post-item md-box-shadow">
