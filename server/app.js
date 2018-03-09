@@ -11,7 +11,7 @@ const localSignin = require('./passport/local-signin');
 const localSignup = require('./passport/local-signup');
 
 //connect mongo db
-const db = require('./config/').dbWin;
+const db = require('./config/').db;
 mongoose.connect(db, err => {
   if (err) throw err;
   console.log('Connected to MongoDB...');

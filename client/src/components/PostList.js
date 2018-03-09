@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { CircularProgress } from 'material-ui/Progress';
 import PostCard from './PostCard';
 
