@@ -261,6 +261,7 @@ input:required {
   position: relative;
   box-sizing: border-box;
   cursor: pointer;
+  user-select: none;
 }
 
 .list-item__link {
@@ -458,7 +459,7 @@ input:required {
   line-height: 1.04;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 708px) {
   .post-item {
     width: 98%;
   }

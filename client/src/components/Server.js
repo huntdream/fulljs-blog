@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ServerRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../App.css';
 import HiHeader from '../containers/HiHeader';
@@ -19,7 +19,7 @@ const AsyncNewPost = Loadable({
   loading: Loading
 });
 
-class App extends Component {
+class Server extends Component {
   componentWillMount() {
     // // const token = localStorage.getItem('token');
     // this.props.initAuth(token);
@@ -61,4 +61,4 @@ const mapDispatchToProps = dispatch => ({
   initAuth: token => dispatch(initAuth(token))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(Server);
