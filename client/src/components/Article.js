@@ -39,7 +39,6 @@ class Article extends Component {
     return (
       <div className="article">
         <h1 className="article-title">{article.title}</h1>
-        <hr />
         <div
           className="article-content"
           dangerouslySetInnerHTML={{
