@@ -285,7 +285,7 @@ input:required {
 .page-outer {
   padding: 64px 0 15px;
   max-width: 1190px;
-  margin: 0 auto;
+  margin: 0 10px;
   display: flex;
   flex-direction: row;
 }

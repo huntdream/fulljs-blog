@@ -24,7 +24,6 @@ class PostList extends Component {
         </div>
       );
     }
-
     return (
       <div className="page-lists">{this.renderList(this.props.items)}</div>
     );

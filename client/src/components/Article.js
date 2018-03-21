@@ -51,7 +51,6 @@ class Article extends Component {
 
   render() {
     let { isFetching, article } = this.state;
-    console.log(article);
     if (isFetching) {
       return (
         <div style={{ alignSelf: 'center' }}>
