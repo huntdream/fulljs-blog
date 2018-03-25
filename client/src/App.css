@@ -283,9 +283,9 @@ input:required {
 }
 
 .page-outer {
-  padding: 64px 0 15px;
+  padding: 64px 10px 15px;
   max-width: 1190px;
-  margin: 0 10px;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
 }
