@@ -461,6 +461,10 @@ input:required {
   line-height: 1.04;
 }
 
+.article-content pre {
+  white-space: pre-line;
+}
+
 @media (max-width: 708px) {
   .post-item {
     width: 98%;
