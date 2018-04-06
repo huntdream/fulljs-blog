@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import IconButton from 'material-ui/IconButton';
-import Button from 'material-ui/Button';
-import menuIcon from '../assets/menu.png';
-import HiLogout from '../containers/HiLogout';
+import React, { Component } from 'react'
+import { NavLink, Link } from 'react-router-dom'
+import IconButton from 'material-ui/IconButton'
+import Button from 'material-ui/Button'
+import menuIcon from '../assets/menu.png'
+import HiLogout from '../containers/HiLogout'
 
 const activeNav = {
   borderBottom: '2px solid rgb(28, 148, 224)',
   color: '#1b95e0'
-};
+}
 
 class Header extends Component {
   render() {
-    let { isAuthenticated, location } = this.props;
+    let { isAuthenticated, location } = this.props
     return (
       <div className="top-bar">
         <div className="global-nav">
@@ -36,8 +36,8 @@ class Header extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-list__item">
-                  <NavLink to="/moments" activeStyle={activeNav}>
-                    Moments
+                  <NavLink to="/music" activeStyle={activeNav}>
+                    Music
                   </NavLink>
                 </li>
               </ul>
@@ -79,8 +79,8 @@ class Header extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Header;
+export default Header
