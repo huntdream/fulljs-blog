@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
-import { CircularProgress } from 'material-ui/Progress';
-import { host } from '../config/host';
+import React, { Component } from 'react'
+import { CircularProgress } from 'material-ui/Progress'
+import { host } from '../config/host'
 
 class Article extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       article: '',
       isFetching: false
-    };
-    this.renderArticle = this.renderArticle.bind(this);
+    }
+    this.renderArticle = this.renderArticle.bind(this)
   }
 
   componentWillMount() {
-    let link = this.props.match.params.link;
+    let link = this.props.match.params.link
     this.setState({
       isFetching: true
-    });
+    })
     fetch(host + '/posts/' + link)
       .then(res => res.json())
       .then(res => {
         if (res.success) {
           this.setState({
             article: res.post
-          });
+          })
         } else {
-          console.log(res.message);
+          console.log(res.message)
         }
       })
       .then(res =>
         this.setState({
           isFetching: false
         })
-      );
+      )
   }
 
   renderArticle(article) {
@@ -46,19 +46,19 @@ class Article extends Component {
           }}
         />
       </div>
-    );
+    )
   }
 
   render() {
-    let { isFetching, article } = this.state;
+    let { isFetching, article } = this.state
     if (isFetching) {
       return (
         <div style={{ alignSelf: 'center' }}>
           <CircularProgress size={30} thickness={4} />
         </div>
-      );
+      )
     }
-    return <div className="article-wrapper">{this.renderArticle(article)}</div>;
+    return <div className="article-wrapper">{this.renderArticle(article)}</div>
   }
 }
-export default Article;
+export default Article

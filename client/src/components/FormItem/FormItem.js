@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from 'react'
+import './style.css'
 
 class FormItem extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       isFocus: false
-    };
-    this._onFocus = this._onFocus.bind(this);
-    this._onBlur = this._onBlur.bind(this);
+    }
+    this._onFocus = this._onFocus.bind(this)
+    this._onBlur = this._onBlur.bind(this)
   }
 
   _onFocus() {
     this.setState({
       isFocus: true
-    });
+    })
   }
 
   _onBlur() {
     if (this._ref.value === '') {
       this.setState({
         isFocus: false
-      });
+      })
     }
   }
 
@@ -63,8 +63,8 @@ class FormItem extends Component {
         <span className="md-bar" />
         <div className="md-error">{this.props.error}</div>
       </div>
-    );
+    )
   }
 }
 
-export default FormItem;
+export default FormItem

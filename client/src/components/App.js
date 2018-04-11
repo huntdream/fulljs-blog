@@ -1,24 +1,12 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Loadable from 'react-loadable'
-import ScrollTo from './ScrollTo'
 import '../App.css'
 import HiHeader from '../containers/HiHeader'
 import Posts from '../containers/Posts'
 import HiDrawer from '../containers/HiDrawer'
-import HiArticle from '../containers/HiArticle'
+import routes from '../routes'
 import { initAuth } from '../redux/actions/auth'
-import Loading from './Loading'
-const AsyncLogin = Loadable({
-  loader: () => import('../containers/Login'),
-  loading: Loading
-})
-
-const AsyncNewPost = Loadable({
-  loader: () => import('./NewPost'),
-  loading: Loading
-})
 
 class App extends Component {
   componentWillMount() {
@@ -29,33 +17,27 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <ScrollTo>
-          <div className="container">
-            <HiHeader />
-            <HiDrawer />
-            <div className="page-container">
-              <div className="page-outer">
-                <div role="main" className="content-main">
-                  <Route exact path="/" component={Posts} />
-                  <Switch>
+        <div className="container">
+          <HiHeader />
+          <HiDrawer />
+          <div className="page-container">
+            <div className="page-outer">
+              <div role="main" className="content-main">
+                <Route exact path="/" component={Posts} />
+                <Switch>
+                  {routes.map(({ path, exact, component }) => (
                     <Route
-                      path="/music"
-                      render={() => (
-                        <h1 align="center">
-                          Current component is under construction
-                        </h1>
-                      )}
+                      path={path}
+                      exact={exact}
+                      component={component}
+                      key={path}
                     />
-                    <Route exact path="/newpost" component={AsyncNewPost} />
-                    <Route exact path="/signup" component={AsyncLogin} />
-                    <Route exact path="/signin" component={AsyncLogin} />
-                    <Route path="/:link" component={HiArticle} />
-                  </Switch>
-                </div>
+                  ))}
+                </Switch>
               </div>
             </div>
           </div>
-        </ScrollTo>
+        </div>
       </Router>
     )
   }

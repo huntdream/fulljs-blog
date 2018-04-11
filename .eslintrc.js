@@ -17,9 +17,9 @@ module.exports = {
   plugins: ['react'],
   rules: {
     quotes: ['error', 'single'],
-    semi: ['error', 'always'],
+    semi: ['error', 'never'],
     'react/prop-types': 0,
     'no-unused-vars': [0],
     'no-console': [0]
   }
-};
+}

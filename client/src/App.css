@@ -342,7 +342,6 @@ input:required {
 }
 
 .post-item__title {
-  text-transform: capitalize;
   height: 36px;
   line-height: 36px;
   overflow: hidden;
@@ -450,7 +449,6 @@ input:required {
   line-height: 1.04;
   color: rgba(0, 0, 0, 0.84);
   text-align: center;
-  text-transform: capitalize;
 }
 
 .article-content {

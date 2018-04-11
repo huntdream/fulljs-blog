@@ -1,34 +1,34 @@
-const express = require('express');
-const path = require('path');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const session = require('express-session');
-const passport = require('passport');
-const localSignin = require('./passport/local-signin');
-const localSignup = require('./passport/local-signup');
+const express = require('express')
+const path = require('path')
+const logger = require('morgan')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const mongoose = require('mongoose')
+const session = require('express-session')
+const passport = require('passport')
+const localSignin = require('./passport/local-signin')
+const localSignup = require('./passport/local-signup')
 
 //connect mongo db
-const db = require('./config/').dbWin;
+const db = require('./config/').dbWin
 mongoose.connect(db, err => {
-  if (err) throw err;
-  console.log('Connected to MongoDB...');
-});
+  if (err) throw err
+  console.log('Connected to MongoDB...')
+})
 
 // init user
 // const User = require('./model/UserSchema');
 // const newUser = new User({ username: 'maoyu', password: 'maoyu' });
 // newUser.save();
 // import routes
-const index = require('./routes/index');
-const posts = require('./routes/posts');
-const poetries = require('./routes/poetries');
-const signup = require('./routes/signup');
-const signin = require('./routes/signin');
-const logout = require('./routes/logout');
-const app = express();
+const index = require('./routes/index')
+const posts = require('./routes/posts')
+const poetries = require('./routes/poetries')
+const signup = require('./routes/signup')
+const signin = require('./routes/signin')
+const logout = require('./routes/logout')
+const app = express()
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -36,11 +36,11 @@ const app = express();
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(
   session({
@@ -49,11 +49,11 @@ app.use(
     saveUninitialized: false,
     name: 'leonard'
   })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use('local-signup', localSignup);
-passport.use('local-signin', localSignin);
+)
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use('local-signup', localSignup)
+passport.use('local-signin', localSignin)
 // passport.serializeUser(function(user, done) {
 //   done(null, user._id);
 // });
@@ -63,33 +63,33 @@ passport.use('local-signin', localSignin);
 //     done(err, user);
 //   });
 // });
-app.use(cors());
+app.use(cors())
 
 // auth-check middleware
-const applyAuthCheck = require('./passport/auth-check');
+const applyAuthCheck = require('./passport/auth-check')
 
-app.use('/', index);
-app.use('/posts', posts);
-app.use('/poetries', poetries);
-app.use('/signup', signup);
-app.use('/signin', signin);
-app.use('/logout', logout);
+app.use('/', index)
+app.use('/posts', posts)
+app.use('/poetries', poetries)
+app.use('/signup', signup)
+app.use('/signin', signin)
+app.use('/logout', logout)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+  const err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.message = err.message
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
 
   // render the error page
-  res.status(err.status || 500);
-});
+  res.status(err.status || 500)
+})
 
-module.exports = app;
+module.exports = app

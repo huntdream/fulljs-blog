@@ -1,49 +1,49 @@
-import React, { Component } from 'react';
-import FormItem from './FormItem/FormItem';
-import Button from 'material-ui/Button';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from 'react'
+import FormItem from './FormItem/FormItem'
+import Button from 'material-ui/Button'
+import { NavLink } from 'react-router-dom'
 
 const activeStyle = {
   color: '#2e3d49',
   background: '#fff',
   borderBottom: '1px solid #fff',
   cursor: 'default'
-};
+}
 
 class Sign extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       username: '',
       password: '',
       isSending: false
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this._onChange = this._onChange.bind(this);
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this._onChange = this._onChange.bind(this)
   }
 
   _onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    });
+    })
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const data = {
       username: this.state.username,
       password: this.state.password
-    };
+    }
 
-    this.props.login(data, this.props.match.path);
+    this.props.login(data, this.props.match.path)
   }
 
   render() {
-    let { path } = this.props.match;
+    let { path } = this.props.match
     let label = {
       '/signin': 'Sign In',
       '/signup': 'Sign Up'
-    };
+    }
     return (
       <div className="form-container">
         <div className="sign-pane">
@@ -82,8 +82,8 @@ class Sign extends Component {
           </Button>
         </form>
       </div>
-    );
+    )
   }
 }
 
-export default Sign;
+export default Sign

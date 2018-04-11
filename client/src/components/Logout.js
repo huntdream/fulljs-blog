@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from 'material-ui/Button';
+import React from 'react'
+import Button from 'material-ui/Button'
 
 const Logout = ({ logout }) => {
   return (
@@ -11,7 +11,7 @@ const Logout = ({ logout }) => {
     >
       Logout
     </Button>
-  );
-};
+  )
+}
 
-export default Logout;
+export default Logout

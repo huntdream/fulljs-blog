@@ -1,14 +1,14 @@
-import React from 'react';
-import { CircularProgress } from 'material-ui/Progress';
+import React from 'react'
+import { CircularProgress } from 'material-ui/Progress'
 
 const Loading = props => {
   if (props.error) {
-    return <div>Error occurred, try to refresh current page</div>;
+    return <div>Error occurred, try to refresh current page</div>
   } else if (props.isLoading) {
-    return <CircularProgress style={{ alignSelf: 'center' }} />;
+    return <CircularProgress style={{ alignSelf: 'center' }} />
   } else {
-    return null;
+    return null
   }
-};
+}
 
-export default Loading;
+export default Loading

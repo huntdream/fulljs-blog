@@ -13,5 +13,5 @@ export default ({ body, title }) => {
       
       <script src="/assets/bundle.js"></script>
     </html>
-  `;
-};
+  `
+}

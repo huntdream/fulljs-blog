@@ -1,5 +1,5 @@
-const User = require('../model/UserSchema');
-const PassportLocalStrategy = require('passport-local').Strategy;
+const User = require('../model/UserSchema')
+const PassportLocalStrategy = require('passport-local').Strategy
 
 /**
  * Return the Passport Local Strategy object.
@@ -15,14 +15,14 @@ module.exports = new PassportLocalStrategy(
     const userData = {
       username: username,
       password: password
-    };
-    const newUser = new User(userData);
+    }
+    const newUser = new User(userData)
 
     newUser.save(err => {
       if (err) {
-        return done(err);
+        return done(err)
       }
-      return done(null);
-    });
+      return done(null)
+    })
   }
-);
+)

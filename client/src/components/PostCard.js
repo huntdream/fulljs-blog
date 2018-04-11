@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import img from '../assets/wings.jpg';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import img from '../assets/wings.jpg'
 
 const PostCard = ({ item }) => {
   return (
@@ -23,7 +23,7 @@ const PostCard = ({ item }) => {
         </div>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard

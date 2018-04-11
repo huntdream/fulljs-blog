@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import bg from '../assets/wings.jpg';
-import avatar from '../assets/avatar.jpg';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import bg from '../assets/wings.jpg'
+import avatar from '../assets/avatar.jpg'
 
 const style = {
   backgroundImage: {
@@ -16,18 +17,18 @@ const style = {
     opcity: 0,
     pointerEvent: 'none'
   }
-};
+}
 
 class Drawer extends Component {
   constructor() {
-    super();
-    this.toggleDrawer = this.toggleDrawer.bind(this);
+    super()
+    this.toggleDrawer = this.toggleDrawer.bind(this)
   }
 
   toggleDrawer(e) {
     if (e.target.classList.contains('drawer__mask')) {
-      console.log(e.target);
-      this.props.closeDrawer();
+      console.log(e.target)
+      this.props.closeDrawer()
     }
   }
 
@@ -57,7 +58,9 @@ class Drawer extends Component {
           <div className="drawer__menu">
             <ul className="menu-list">
               <li className="list-item">
-                <a className="list-item__link">Category</a>
+                <Link className="list-item__link" to="/category">
+                  Category
+                </Link>
               </li>
               <li className="list-item">
                 <a className="list-item__link">Messages</a>
@@ -69,8 +72,8 @@ class Drawer extends Component {
           </div>
         </div>
       </aside>
-    );
+    )
   }
 }
 
-export default Drawer;
+export default Drawer

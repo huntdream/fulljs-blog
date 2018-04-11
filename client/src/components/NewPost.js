@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import ReactQuill from 'react-quill';
-import FormItem from './FormItem/FormItem';
-import 'react-quill/dist/quill.snow.css';
-import Button from 'material-ui/Button';
-import { CircularProgress } from 'material-ui/Progress';
-import { host } from '../config/host';
+import React, { Component } from 'react'
+import ReactQuill from 'react-quill'
+import FormItem from './FormItem/FormItem'
+import 'react-quill/dist/quill.snow.css'
+import Button from 'material-ui/Button'
+import { CircularProgress } from 'material-ui/Progress'
+import { host } from '../config/host'
 
 class NewPost extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       title: '',
@@ -16,29 +16,29 @@ class NewPost extends Component {
       content: '',
       category: '',
       isSending: false
-    };
-    this._onChange = this._onChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    this._onChange = this._onChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   _onChange(e, label) {
     this.setState({
       [label]: e.target.value
-    });
+    })
   }
 
   handleChange(value) {
-    this.setState({ content: value });
+    this.setState({ content: value })
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    const { title, link, content } = this.state;
-    const token = localStorage.getItem('token');
+    e.preventDefault()
+    const { title, link, content } = this.state
+    const token = localStorage.getItem('token')
     this.setState({
       isSending: true
-    });
+    })
     fetch(`${host}/posts`, {
       method: 'POST',
       headers: {
@@ -50,26 +50,26 @@ class NewPost extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        console.log(res)
         if (res.success) {
-          console.log('Successful');
+          console.log('Successful')
           this.setState({
             isSending: false
-          });
+          })
         } else {
-          throw Error(res.message);
+          throw Error(res.message)
         }
       })
       .catch(err => {
         this.setState({
           isSending: false
-        });
-        console.log(err);
-      });
+        })
+        console.log(err)
+      })
   }
 
   render() {
-    let { isSending, content } = this.state;
+    let { isSending, content } = this.state
     return (
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>
@@ -110,8 +110,8 @@ class NewPost extends Component {
           </div>
         </form>
       </div>
-    );
+    )
   }
 }
 
-export default NewPost;
+export default NewPost
