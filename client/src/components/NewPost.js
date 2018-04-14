@@ -34,7 +34,7 @@ class NewPost extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    const { title, link, content } = this.state
+    const { title, link, content, category } = this.state
     const token = localStorage.getItem('token')
     this.setState({
       isSending: true
@@ -46,7 +46,7 @@ class NewPost extends Component {
         'Content-Type': 'application/json',
         Authorization: `bearer ${token}`
       },
-      body: JSON.stringify({ title, link, content })
+      body: JSON.stringify({ title, link, content, category })
     })
       .then(res => res.json())
       .then(res => {

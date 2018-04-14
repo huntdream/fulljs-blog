@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../App.css'
 import HiHeader from '../containers/HiHeader'
-import Posts from '../containers/Posts'
 import HiDrawer from '../containers/HiDrawer'
 import routes from '../routes'
 import { initAuth } from '../redux/actions/auth'
@@ -23,7 +22,6 @@ class App extends Component {
           <div className="page-container">
             <div className="page-outer">
               <div role="main" className="content-main">
-                <Route exact path="/" component={Posts} />
                 <Switch>
                   {routes.map(({ path, exact, component }) => (
                     <Route

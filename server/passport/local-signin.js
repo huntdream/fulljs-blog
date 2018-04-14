@@ -1,7 +1,7 @@
 const User = require('../model/UserSchema')
 const PassportLocalStrategy = require('passport-local').Strategy
 const jwt = require('jsonwebtoken')
-const secret = require('../config').jwtSecret
+const secret = require('../config/index.json').jwtSecret
 
 /**
  * the Passport Local Strategy Login object.

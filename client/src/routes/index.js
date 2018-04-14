@@ -1,8 +1,11 @@
-// import Posts from '../containers/Posts'
+import React from 'react'
+import Posts from '../containers/Posts'
 import HiArticle from '../containers/HiArticle'
 import Loading from '../components/Loading'
 import Category from '../components/Category'
 import Loadable from 'react-loadable'
+
+const Music = () => <div>Component for Netease Music</div>
 
 const AsyncLogin = Loadable({
   loader: () => import('../containers/Login'),
@@ -15,11 +18,11 @@ const AsyncNewPost = Loadable({
 })
 
 const routes = [
-  // {
-  //   path: '/',
-  //   exact: true,
-  //   component: Posts
-  // },
+  {
+    path: '/',
+    exact: true,
+    component: Posts
+  },
   {
     path: '/signin',
     exact: true,
@@ -39,6 +42,11 @@ const routes = [
     path: '/category',
     exact: true,
     component: Category
+  },
+  {
+    path: '/music',
+    exact: true,
+    component: Music
   },
   {
     path: '/:link',

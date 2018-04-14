@@ -32,6 +32,12 @@ a {
   outline: none;
 }
 
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
 /* fix for Firefox which will show a red border when a input
  is set to required */
 
@@ -461,6 +467,44 @@ input:required {
 
 .article-content pre {
   white-space: pre-line;
+}
+
+/* Category */
+.category-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category-wrapper > ul {
+  max-width: 400px;
+  margin-left: 67px;
+}
+
+.category-item {
+  line-height: 36px;
+  user-select: none;
+}
+
+.category {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease-in-out;
+  font-size: 24px;
+}
+
+.category:hover {
+  color: skyblue;
+}
+
+.category::after {
+  content: attr(data-count);
+  position: absolute;
+  font-size: 18px;
+  height: 100%;
+  padding: 0 10px;
+  color: #b7b156;
 }
 
 @media (max-width: 708px) {

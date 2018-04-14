@@ -27,7 +27,6 @@ class Drawer extends Component {
 
   toggleDrawer(e) {
     if (e.target.classList.contains('drawer__mask')) {
-      console.log(e.target)
       this.props.closeDrawer()
     }
   }

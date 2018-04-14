@@ -29,8 +29,6 @@ router.get('/:link', (req, res, next) => {
 
 router.post('/', applyAuthCheck, (req, res, next) => {
   const newPost = new Post({ ...req.body, author: req.user.username })
-  console.log(req.user)
-  console.log(newPost)
 
   newPost.save(err => {
     if (err) {

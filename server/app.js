@@ -11,7 +11,7 @@ const localSignin = require('./passport/local-signin')
 const localSignup = require('./passport/local-signup')
 
 //connect mongo db
-const db = require('./config/').dbWin
+const db = require('./config/db.js')
 mongoose.connect(db, err => {
   if (err) throw err
   console.log('Connected to MongoDB...')
@@ -28,6 +28,8 @@ const poetries = require('./routes/poetries')
 const signup = require('./routes/signup')
 const signin = require('./routes/signin')
 const logout = require('./routes/logout')
+const category = require('./routes/category')
+
 const app = express()
 
 // view engine setup
@@ -74,6 +76,7 @@ app.use('/poetries', poetries)
 app.use('/signup', signup)
 app.use('/signin', signin)
 app.use('/logout', logout)
+app.use('/category', category)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

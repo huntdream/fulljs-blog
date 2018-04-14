@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import App from './components/App'
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import { Route } from 'react-router'
+
+console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store}>

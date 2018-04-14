@@ -1,5 +1,3 @@
 {
-  "db": "mongodb://blog:blog@localhost:27017/blog?authSource=blog",
-  "dbWin": "mongodb://localhost:27017/blog",
   "jwtSecret": "there is a crack in everything"
 }
