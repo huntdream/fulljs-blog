@@ -12,7 +12,7 @@ class Article extends Component {
     this.renderArticle = this.renderArticle.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let link = this.props.match.params.link
     this.setState({
       isFetching: true
@@ -58,7 +58,17 @@ class Article extends Component {
         </div>
       )
     }
-    return <div className="article-wrapper">{this.renderArticle(article)}</div>
+    return (
+      <React.Fragment>
+        <div className="article-wrapper">
+          {this.renderArticle(article)}
+          <div className="comment-wrapper">
+            <div className="comment-label">Comments</div>
+            <div className="comment-outer">hah</div>
+          </div>
+        </div>
+      </React.Fragment>
+    )
   }
 }
 export default Article

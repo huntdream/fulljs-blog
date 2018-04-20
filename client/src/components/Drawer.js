@@ -26,7 +26,10 @@ class Drawer extends Component {
   }
 
   toggleDrawer(e) {
-    if (e.target.classList.contains('drawer__mask')) {
+    if (
+      e.target.classList.contains('drawer__mask') ||
+      e.target.tagName === 'A'
+    ) {
       this.props.closeDrawer()
     }
   }

@@ -10,6 +10,12 @@ router.get('/', (req, res, next) => {
           _id: '$category',
           count: {
             $sum: 1
+          },
+          posts: {
+            $push: {
+              title: '$title',
+              link: '$link'
+            }
           }
         }
       }

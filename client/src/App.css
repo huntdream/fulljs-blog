@@ -36,6 +36,7 @@ ul,
 li {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 /* fix for Firefox which will show a red border when a input
@@ -432,24 +433,22 @@ input:required {
 
 /* Article */
 .article-wrapper {
-  background-color: #fff;
   min-height: 400px;
   width: 840px;
   max-width: 100%;
   margin: 20px auto;
-  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
 }
 
 .article {
   margin: 0 auto;
-  width: 740px;
-  max-width: 100%;
+  width: 100%;
   padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
 }
 
 .article-title {
   margin: 20px 0;
-  font-size: 42px;
   font-weight: 600;
   width: 100%;
   line-height: 1.04;
@@ -467,6 +466,26 @@ input:required {
 
 .article-content pre {
   white-space: pre-line;
+}
+
+.comment-wrapper {
+  margin-top: 60px;
+  width: 100%;
+  position: relative;
+}
+
+.comment-outer {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.comment-label {
+  display: inline-block;
+  color: #24b090;
+  font-weight: bold;
 }
 
 /* Category */
@@ -490,7 +509,7 @@ input:required {
   position: relative;
   cursor: pointer;
   user-select: none;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-out;
   font-size: 24px;
 }
 
@@ -505,6 +524,18 @@ input:required {
   height: 100%;
   padding: 0 10px;
   color: #b7b156;
+}
+
+.category-detail {
+  margin-left: 30px;
+  height: 0;
+  overflow: hidden;
+  animation: slideOut 0.5s ease-in-out;
+}
+
+.category.show ~ .category-detail {
+  display: block !important;
+  height: 100%;
 }
 
 @media (max-width: 708px) {

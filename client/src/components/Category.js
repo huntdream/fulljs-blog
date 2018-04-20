@@ -26,11 +26,12 @@ class Category extends Component {
   showCategoryDetail(e) {
     e.preventDefault()
     console.log('hello,want to expand details?no way!')
-    this.setState(prevState => {
-      return {
-        expand: !prevState.expand
-      }
-    })
+    // this.setState(prevState => {
+    //   return {
+    //     expand: !prevState.expand
+    //   }
+    // })
+    e.target.classList.toggle('show')
   }
 
   render() {
@@ -47,7 +48,15 @@ class Category extends Component {
               >
                 {item._id}
               </a>
-              {expand ? <div className="category-detail">expand</div> : ''}
+              <div className="category-detail" style={{ display: 'none' }}>
+                <ul>
+                  {item.posts.map(item => (
+                    <li key={item.link}>
+                      <Link to={item.link}>{item.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </li>
           ))}
         </ul>
