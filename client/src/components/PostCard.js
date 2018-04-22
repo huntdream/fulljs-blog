@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import img from '../assets/wings.jpg'
+import LazyImage from './LazyImage'
+import preLoad from '../assets/avatar.jpg'
 
 const PostCard = ({ item }) => {
   return (
     <div className="post-item md-box-shadow">
       <Link to={`/${item.link}`} className="post-href">
-        <div
-          className="post-item__img"
-          style={{ backgroundImage: `url(${img})` }}
-        />
+        <LazyImage srcPreload={preLoad} srcLoaded={img} />
         <div className="post-item__content">
           <div className="content__wrapper">
             <h2 className="post-item__title">{item.title}</h2>
