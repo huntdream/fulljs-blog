@@ -6,8 +6,7 @@ class Category extends Component {
   constructor() {
     super()
     this.state = {
-      category: [],
-      expand: false
+      category: []
     }
     this.showCategoryDetail = this.showCategoryDetail.bind(this)
   }
@@ -35,7 +34,7 @@ class Category extends Component {
   }
 
   render() {
-    const { expand, category } = this.state
+    const { category } = this.state
     return (
       <div className="category-wrapper">
         <ul>
