@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import '../App.css'
 import HiHeader from '../containers/HiHeader'
 import HiDrawer from '../containers/HiDrawer'
+import DocumentTitle from './DocumentTitle'
 import routes from '../routes'
 import { initAuth } from '../redux/actions/auth'
 
@@ -23,14 +24,20 @@ class App extends Component {
             <div className="page-outer">
               <div role="main" className="content-main">
                 <Switch>
-                  {routes.map(({ path, exact, component }) => (
-                    <Route
-                      path={path}
-                      exact={exact}
-                      component={component}
-                      key={path}
-                    />
-                  ))}
+                  {routes.map(
+                    ({ path, exact, title, component: Component }) => (
+                      <Route
+                        path={path}
+                        exact={exact}
+                        render={props => (
+                          <DocumentTitle key={path} title={title}>
+                            <Component {...props} />
+                          </DocumentTitle>
+                        )}
+                        key={path}
+                      />
+                    )
+                  )}
                 </Switch>
               </div>
             </div>

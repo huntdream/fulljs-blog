@@ -24,6 +24,7 @@ class Article extends Component {
           this.setState({
             article: res.post
           })
+          document.title = this.state.article.title
         } else {
           console.log(res.message)
         }
