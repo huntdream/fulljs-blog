@@ -1,8 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const nodeExternals = require('webpack-node-externals')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const client = {
   entry: { app: './client/src/index.js' },
@@ -46,49 +46,49 @@ const client = {
     filename: 'bundle.js'
   },
   mode: 'production'
-};
+}
 
-// const server = {
-//   entry: './ssr/server.js',
-//   target: 'node',
-//   externals: [nodeExternals()],
-//   output: {
-//     path: path.join(__dirname, '/build'),
-//     filename: 'server.js',
-//     libraryTarget: 'commonjs2'
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: [/\.svg$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-//         loader: 'file-loader',
-//         options: {
-//           name: '[name].[ext]',
-//           emit: false
-//         }
-//       },
-//       {
-//         test: /\.css$/,
-//         use: [
-//           {
-//             loader: 'css-loader/locals'
-//           }
-//         ]
-//       },
-//       {
-//         test: /js$/,
-//         exclude: /(node_modules)/,
-//         loader: 'babel-loader',
-//         query: { presets: ['react'] }
-//       }
-//     ]
-//   },
-//   plugins: [
-//     new CleanWebpackPlugin(),
-//     new webpack.DefinePlugin({
-//       __isBrowser__: 'false'
-//     })
-//   ]
-// };
+const server = {
+  entry: './app.js',
+  target: 'node',
+  externals: [nodeExternals()],
+  output: {
+    path: path.join(__dirname, '/build'),
+    filename: 'server.js'
+  },
+  module: {
+    rules: [
+      {
+        test: [/\.svg$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          emit: false
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'css-loader/locals'
+          }
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      __isBrowser__: 'false'
+    })
+  ]
+}
 
-exports.default = [client];
+exports.default = [client, server]
