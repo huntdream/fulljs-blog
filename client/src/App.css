@@ -12,7 +12,7 @@ body {
   height: 100%;
   margin: 0;
   font-size: 16px;
-  background-color: #f4f4ef;
+  background-color: #fff;
   position: relative;
   line-height: 20px;
   font-family: Arial, 'Microsoft YaHei', sans-serif;
@@ -444,7 +444,7 @@ input:required {
   width: 100%;
   padding: 20px 0;
   background-color: #fff;
-  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
+  /* box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7; */
 }
 
 .article-title {
@@ -477,7 +477,7 @@ input:required {
 .comment-outer {
   width: 100%;
   background-color: #fff;
-  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
+  border: 1px solid #eee;
   padding: 10px;
   box-sizing: border-box;
 }
