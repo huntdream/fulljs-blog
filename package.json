@@ -8,6 +8,7 @@
     "prod": "NODE_ENV==production && npm start",
     "client": "cd ./client && yarn start",
     "client-pc": "cd ./client && yarn run start-pc",
+    "build-react":"cd ./client && yarn build",
     "build": "webpack",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server --open"
