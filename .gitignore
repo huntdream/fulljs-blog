@@ -26,3 +26,4 @@ yarn-error.log*
 /ssr
 /build
 /server/config
+/server/public

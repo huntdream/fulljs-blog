@@ -71,12 +71,16 @@ app.use(cors())
 const applyAuthCheck = require('./passport/auth-check')
 
 app.use('/', index)
-app.use('/posts', posts)
-app.use('/poetries', poetries)
-app.use('/signup', signup)
-app.use('/signin', signin)
-app.use('/logout', logout)
-app.use('/category', category)
+app.use('/api/posts', posts)
+app.use('/api/poetries', poetries)
+app.use('/api/signup', signup)
+app.use('/api/signin', signin)
+app.use('/api/logout', logout)
+app.use('/api/category', category)
+
+app.use('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

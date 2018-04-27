@@ -578,3 +578,20 @@ input:required {
 .image-fade-in {
   opacity: 1;
 }
+
+/* Transition */
+.fade-enter {
+  opacity: 0.01;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: all 500ms ease-in;
+  transition-delay: 200ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0.01;
+  transition: all 100ms ease-in;
+}
